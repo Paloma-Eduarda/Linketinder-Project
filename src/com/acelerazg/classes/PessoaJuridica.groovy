@@ -1,6 +1,7 @@
-package com.azelerazg.classes
+package com.acelerazg.classes
 
 class PessoaJuridica extends Pessoa {
     String cnpj
     String pais
+
 }
