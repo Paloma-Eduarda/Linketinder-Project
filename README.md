@@ -24,3 +24,4 @@ O **Linketinder** é uma aplicação Groovy que combina a funcionalidade de Matc
 1. **Listar Empresas**: Listar todas as empresas.
 2. **Listar Candidatos**: Listar todos os candidatos.
 
+Desenvolvido por Paloma Eduarda
