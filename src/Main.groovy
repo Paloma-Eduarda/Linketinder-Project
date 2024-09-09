@@ -1,5 +1,7 @@
 import com.acelerazg.classes.PessoaFisica
 import com.acelerazg.classes.PessoaJuridica
+import com.acelerazg.service.FisicaService
+import com.acelerazg.service.JuridicaServive
 
 static void main(String[] args) {
 
@@ -96,11 +98,45 @@ static void main(String[] args) {
           cep: "80000-001",
           descricao: "Empresa de logística e transporte rápido, oferecendo serviços de entrega expressa em todo o território nacional."
   )
+  FisicaService ps = new FisicaService()
+  ps.cadastrar(p1)
+  ps.cadastrar(p2)
+  ps.cadastrar(p3)
+  ps.cadastrar(p4)
+  ps.cadastrar(p5)
 
-  println p1.email
-  print "---------Menu----------"
-  print'''
-[1] - Listar empresas
-[2] - Listar candidatos'''
+  JuridicaServive pj = new JuridicaServive()
+  pj.cadastrar(empresa1)
+  pj.cadastrar(empresa2)
+  pj.cadastrar(empresa3)
+  pj.cadastrar(empresa4)
+  pj.cadastrar(empresa5)
 
+  def scanner = new Scanner(System.in)
+
+  while (true) {
+    println "\nMenu:"
+    println "1. Listar Empresas"
+    println "2. Listar Pessoas"
+    println "3. Sair"
+    print "Escolha uma opção: "
+
+    def opcao = scanner.nextLine().toInteger()
+
+    switch(opcao) {
+      case 1:
+        println "\nEmpresas cadastradas:"
+        println pj.listar()
+        break
+      case 2:
+        println "\nPessoas cadastradas:"
+        println ps.listar()
+        break
+      case 3:
+        println "Saindo do programa..."
+        System.exit(0)
+      default:
+        println "Opção inválida! Por favor, escolha uma opção válida."
+    }
+  }
 }

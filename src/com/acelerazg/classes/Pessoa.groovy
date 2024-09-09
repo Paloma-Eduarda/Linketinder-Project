@@ -1,7 +1,5 @@
 package com.acelerazg.classes
-import groovy.transform.ToString
 
-//@ToString
 class Pessoa {
     String nome
     String email
@@ -11,4 +9,10 @@ class Pessoa {
     List competencias = ["Python", "Java", "Spring Framework"]
 
 
+    @Override
+    public String toString() {
+        return  "nome='" + nome + '\'' +
+                ", email='" + email + '\'' +
+                ", descricao='" + descricao + '\n';
+    }
 }
