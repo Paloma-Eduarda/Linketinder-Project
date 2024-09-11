@@ -1,6 +1,6 @@
 package com.acelerazg.classes
 
-class PessoaJuridica extends Pessoa {
+class Empresa extends Pessoa {
     String cnpj
     String pais
 
