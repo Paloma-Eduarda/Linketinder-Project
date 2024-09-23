@@ -1,6 +1,6 @@
-import PessoaService from "../pessoaService";
+import PessoaService from "../services/pessoaService";
 
-export abstract class Pessoa implements PessoaService{
+export abstract class Pessoa {
     nome: string
     email: string
     estato:string

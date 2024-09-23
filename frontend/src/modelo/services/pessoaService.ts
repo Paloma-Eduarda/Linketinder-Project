@@ -5,4 +5,6 @@ export default interface PessoaService {
     cep: string //Pensar sobre o tipo
     descricao: string
     competencias: any
+
+    cadastrar<T>(): T
 }
