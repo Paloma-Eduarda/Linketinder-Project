@@ -2,7 +2,10 @@ const path = require('path')
 const CopyPlugin = require('copy-webpack-plugin')
 module.exports = {
     mode:'production',
-    entry: './src/modelo/services/cadastroCandidato',
+    entry: {
+        cadastro:'./src/modelo/services/cadastroCandidato',
+        telaCandidato:'./src/modelo/services/perfilCandidato'
+    },
     devServer:{
         static: {
             directory: './dist/cs', // Ajuste o caminho conforme necessário
@@ -11,7 +14,7 @@ module.exports = {
         hot: true
     },
     output:{
-        filename: 'app.min.js',
+        filename: '[name].min.js',
         path: path.join(__dirname, 'dist')
     },
     plugins:[
