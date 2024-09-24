@@ -9,9 +9,6 @@ class Pessoa {
     List competencias = ["Python", "Java", "Spring Framework"]
 
 
-
-
-
     @Override
     public String toString() {
         return  "nome='" + nome + '\'' +
