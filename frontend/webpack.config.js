@@ -4,7 +4,8 @@ module.exports = {
     mode:'production',
     entry: {
         cadastro:'./src/modelo/services/cadastroCandidato',
-        telaCandidato:'./src/modelo/services/perfilCandidato'
+        telaCandidato:'./src/modelo/services/perfilCandidato',
+        telaEmpresa:'./src/modelo/services/perfilEmpresa'
     },
     devServer:{
         static: {

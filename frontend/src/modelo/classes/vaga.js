@@ -1,4 +1,6 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Vaga = void 0;
 class Vaga {
     constructor(_empresa, _titulo, _formato, _local, _descricao, _competencias, _qualificacoes) {
         this._empresa = _empresa;
@@ -52,3 +54,4 @@ class Vaga {
         this._qualificacoes = value;
     }
 }
+exports.Vaga = Vaga;
