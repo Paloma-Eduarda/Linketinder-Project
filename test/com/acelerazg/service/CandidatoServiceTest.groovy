@@ -27,7 +27,7 @@ class CandidatoServiceTest {
     @Test
    void testCadastrar() {
         candidatoService.cadastrar(c1)
-
+        //contains()
         assert candidatoService.candidatos[0].nome == "Paloma Eduarda"
         assert candidatoService.candidatos[0].email == "paloma@gmail.com"
         assert candidatoService.candidatos[0].cpf == "000.000.000-00"

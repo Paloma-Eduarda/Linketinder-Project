@@ -1,8 +1,10 @@
-import {candidatos} from "./listaDeCandidatos";
+import { candidatos } from "./listaDeCandidatos";
+import {Candidato} from '../classes/candidato.js'
+
 
 function renderCandidatos() {
     const candidatoList = document.getElementById('candidato-list');
-
+    //let myItem = JSON.parse(localStorage.getItem(nomes));
     if (candidatoList) {
         candidatos.forEach(candidato => {
             const candidatoDiv = document.createElement('div');
@@ -10,22 +12,26 @@ function renderCandidatos() {
             candidatoDiv.innerHTML = `<br><div class="card card border-light mb-3" 
                     style="max-width: 50rem; text-align: center;
                      padding: 20px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
-            <div >
-                    <h4 class="card-header" style="background-color: #863b67; color: white">Candidato</h4>
-                    <h2>${candidato.nome}</h2>
-                    <p><strong>Descrição:</strong> ${candidato.descricao}</p>
+            <div>
+                    <h4 class="card-header" style="background-color: #863b67; color: white">Candidato Anonimo</h4>
+                 
                     <p><strong>Competências:</strong> ${candidato.competencias.join(', ')}</p>
-                    <spa><a href="#" class="card-link"><i class="bi bi-x-circle" style="color: darkred;"></i></a>
+                    <span><a href="#" class="card-link"><i class="bi bi-x-circle" style="color: darkred;"></i></a>
                     <a href="#" class="card-link"><i class="bi bi-check-circle" style="color: green"></i></a>
-                    </spa>
+                    </span>
                 </div>
               </div>     
             </div><br>`;
 
             candidatoList.appendChild(candidatoDiv);
+            console.log(candidato.idCandidato)
+
+            const myItem = localStorage.getItem(candidato.idCandidato);
+            console.log(myItem);
         });
     }
 }
 
 renderCandidatos();
-console.log(candidatos)
+
+

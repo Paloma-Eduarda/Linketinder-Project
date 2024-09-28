@@ -5,6 +5,4 @@ class Candidato extends Pessoa{
     int idade
 
 
-
-
 }

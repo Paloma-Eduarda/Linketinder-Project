@@ -1,18 +1,18 @@
 import PessoaService from "../services/pessoaService";
 
 export abstract class Pessoa {
+
     private _nome: string
     private _email: string
     private _estato:string
-    private _cep: string //Pensar sobre o tipo
+    private _cep: string
     private _descricao?: string
     private _competencias: any
 
-
-    constructor(nome: string, email: string, estato: string, cep:string, descricao:string, competencias:string) {
+    constructor(nome: string, email: string, estado: string, cep:string, descricao:string, competencias:string) {
         this._nome = nome
         this._email = email
-        this._estato = estato
+        this._estato = estado
         this._cep = cep
         this._descricao = descricao
         this._competencias = competencias
@@ -33,11 +33,11 @@ export abstract class Pessoa {
     set email(value: string) {
         this._email = value;
     }
-    get estato(): string {
+    get estado(): string {
         return this._estato;
     }
 
-    set estato(value: string) {
+    set estado(value: string) {
         this._estato = value;
     }
 
@@ -64,4 +64,5 @@ export abstract class Pessoa {
     set competencias(value: any) {
         this._competencias = value;
     }
+
 }
