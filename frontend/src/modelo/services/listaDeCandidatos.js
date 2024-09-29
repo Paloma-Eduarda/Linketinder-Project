@@ -1,55 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.candidatos = void 0;
+const candidato_1 = require("../classes/candidato");
 exports.candidatos = [
-// new Candidato(
-//     "João Silva",
-//     "joao.silva@email.com",
-//     30,
-//     "123.456.789-10",
-//     "SP",
-//     "01000-000",
-//     "Desenvolvedor Front-End com experiência em TypeScript.",
-//     ["HTML", "CSS", "JavaScript", "TypeScript", "React"]
-// ),
-// new Candidato(
-//     "Maria Oliveira",
-//     "maria.oliveira@email.com",
-//     28,
-//     "987.654.321-00",
-//     "RJ",
-//     "20000-000",
-//     "Desenvolvedora Full-Stack com foco em Java e Angular.",
-//     ["Java", "Angular", "Spring Boot", "SQL"]
-// ),
-// new Candidato(
-//     "Carlos Souza",
-//     "carlos.souza@email.com",
-//     35,
-//     "147.258.369-00",
-//     "MG",
-//     "30000-000",
-//     "Engenheiro de software com habilidades em cloud computing.",
-//     ["AWS", "Docker", "Kubernetes", "Node.js"]
-// ),
-// new Candidato(
-//     "Ana Martins",
-//     "ana.martins@email.com",
-//     40,
-//     "321.654.987-00",
-//     "RS",
-//     "90000-000",
-//     "Gerente de projetos com experiência em metodologias ágeis.",
-//     ["Scrum", "Kanban", "Jira", "Gestão de Equipes"]
-// ),
-// new Candidato(
-//     "Lucas Fernandes",
-//     "lucas.fernandes@email.com",
-//     25,
-//     "159.753.486-00",
-//     "SP",
-//     "04567-890",
-//     "Desenvolvedor Mobile com experiência em Flutter e Kotlin.",
-//     ["Flutter", "Kotlin", "Swift", "Firebase"]
-// )
+    new candidato_1.Candidato("João Silva", "joao.silva@email.com", "São Paulo", "01001-000", "Desenvolvedor Full Stack com 5 anos de experiência.", "JavaScript, TypeScript, Node.js, React", 28, "123.456.789-00", "Bacharelado em Ciência da Computação", "Português, Inglês"
+    //["Desenvolvedor na Empresa X", "Estagiário na Empresa Y"]
+    ),
+    new candidato_1.Candidato("Maria Oliveira", "maria.oliveira@email.com", "Rio de Janeiro", "20010-001", "Especialista em análise de dados e automação.", "Python, SQL, Power BI", 32, "987.654.321-00", "Mestrado em Engenharia de Software", "Português, Espanhol"),
+    new candidato_1.Candidato("Carlos Souza", "carlos.souza@email.com", "Minas Gerais", "30130-002", "Engenheiro de software focado em desenvolvimento backend.", "Java, Spring Boot, Docker", 35, "456.789.123-00", "Bacharelado em Engenharia da Computação", "Português, Inglês, Alem")
 ];

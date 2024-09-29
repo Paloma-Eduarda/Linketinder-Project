@@ -17,7 +17,7 @@
     <!-- Links -->
     <ul class="navbar-nav ">
 
-      <form class="form-inline" action="/action_page.php">
+      <form class="form-inline">
         <input class="form-control mr-sm-2" type="text" placeholder="procurar candidato">
         <button class="btn" type="submit"><i class="bi bi-search"></i></button>
       </form>
@@ -25,7 +25,7 @@
         <a class="nav-link" href="#"><i class="bi bi-app-indicator"></i></a>
       </li>
       <li class="nav-item menu">
-        <a class="nav-link" href="#"><i class="bi bi-person-workspace"></i></a>
+        <a class="nav-link" href="#myModal" data-toggle="modal"><i class="bi bi-person-workspace"></i></a>
       </li>
       <li class="nav-item menu">
         <a class="nav-link" href="#"> <i class="bi bi-chat-dots"></i></a>
@@ -36,6 +36,57 @@
     </ul>
 
   </nav>
+
+  <div class="modal" id="myModal">
+      <div class="modal-dialog">
+          <div class="modal-content">
+
+              <!-- Modal Header -->
+              <div class="modal-header">
+                  <h4 class="modal-title">Cadastrar Vaga</h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+
+              <!-- Modal body -->
+              <div class="modal-body">
+                  <form>
+                      <div class="form-group">
+                          <label for="titulo_vaga">Titulo: </label>
+                          <input type="text" class="form-control" id="titulo_vaga">
+                      </div>
+                      <div class="form-group">
+                          <label for="formato_vaga">Formato: </label>
+                          <input type="text" class="form-control" id="formato_vaga">
+                      </div>
+                      <div class="form-group">
+                          <label for="local_vaga">Local: </label>
+                          <input type="text" class="form-control" id="local_vaga">
+                      </div>
+                      <div class="form-group">
+                          <label for="descricao_vaga">Descrição: </label>
+                          <textarea  class="form-control" id="descricao_vaga" rows="4" cols="50" required></textarea><br>
+                      </div>
+                      <div class="form-group">
+                          <label for="competencia_vaga">Competências: </label>
+                          <input type="text" class="form-control" id="competencia_vaga">
+                      </div>
+                      <div class="form-group">
+                          <label for="qualificacoes_vaga">Qualificações: </label>
+                          <input type="text" class="form-control" id="qualificacoes_vaga">
+                      </div>
+
+                  </form>
+              </div>
+
+              <!-- Modal footer -->
+              <div class="modal-footer">
+                  <button id="cad_vaga" type="button" class="btn btn-success" data-dismiss="modal">Cadastrar</button>
+              </div>
+
+          </div>
+      </div>
+  </div>
+
   <div id="candidato-list" style="margin-left: 20%">
 
   </div>

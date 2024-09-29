@@ -1,6 +1,12 @@
 export class Vaga {
-    constructor(private _empresa:string, private _titulo:string, private _formato:string, private _local:string,
-                private _descricao:string, private _competencias: Array<string>, private _qualificacoes: string) {
+    constructor(
+        private _empresa:string,
+                private _titulo:string,
+                private _formato:string,
+                private _local:string,
+                private _descricao:string,
+                private _competencias: string,
+                private _qualificacoes: string) {
     }
 
     get empresa(): string {
@@ -43,11 +49,11 @@ export class Vaga {
         this._descricao = value;
     }
 
-    get competencias(): Array<string> {
+    get competencias(): string{
         return this._competencias;
     }
 
-    set competencias(value: Array<string>) {
+    set competencias(value: string) {
         this._competencias = value;
     }
 

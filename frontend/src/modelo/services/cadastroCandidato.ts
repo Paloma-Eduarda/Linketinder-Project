@@ -1,6 +1,6 @@
 import {Candidato} from '../classes/candidato.js'
+import {candidatos} from "./listaDeCandidatos";
 
-export let can:Array<Candidato>
 
 document.addEventListener("DOMContentLoaded",  function() {
     const salvarBtn = document.getElementById('enviar') as HTMLButtonElement;
@@ -15,8 +15,22 @@ document.addEventListener("DOMContentLoaded",  function() {
         const cep = (document.getElementById('cepCandidato') as HTMLInputElement).value;
         const competencias = (document.getElementById('competenciaCan') as HTMLInputElement).value;
         const descricao = (document.getElementById('descricao') as HTMLInputElement).value;
+        const formacao = (document.getElementById('formacao') as HTMLInputElement).value;
+        const idiomas = (document.getElementById('idiomas') as HTMLInputElement).value;
+        const experiencia = (document.getElementById('experiencia') as HTMLInputElement).value;
 
-        const novoUsuarioC = new Candidato(nome, email,estado, cep, descricao, competencias, Number(idade), cpf)
+        const novoUsuarioC = new Candidato(
+            nome,
+            email,
+            estado,
+            cep,
+            descricao,
+            competencias,
+            Number(idade),
+            cpf,
+            formacao,
+            idiomas,
+            )
 
         salvarCandidato(novoUsuarioC)
 
@@ -25,9 +39,9 @@ document.addEventListener("DOMContentLoaded",  function() {
 })
 
 function salvarCandidato(novoCandidato: Candidato) {
-    can = JSON.parse(localStorage.getItem('can') || '[]');
-    can.push(novoCandidato);
-    localStorage.setItem('can', JSON.stringify(can))
+    const candidatos = JSON.parse(localStorage.getItem('candidatos') || '[]');
+    candidatos.push(novoCandidato)
+    localStorage.setItem('candidatos', JSON.stringify(candidatos))
     console.log('Candidato salvo no localStorage');
 }
 

@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.can = void 0;
 const candidato_js_1 = require("../classes/candidato.js");
 document.addEventListener("DOMContentLoaded", function () {
     const salvarBtn = document.getElementById('enviar');
@@ -14,13 +13,16 @@ document.addEventListener("DOMContentLoaded", function () {
         const cep = document.getElementById('cepCandidato').value;
         const competencias = document.getElementById('competenciaCan').value;
         const descricao = document.getElementById('descricao').value;
-        const novoUsuarioC = new candidato_js_1.Candidato(nome, email, estado, cep, descricao, competencias, Number(idade), cpf);
+        const formacao = document.getElementById('formacao').value;
+        const idiomas = document.getElementById('idiomas').value;
+        const experiencia = document.getElementById('experiencia').value;
+        const novoUsuarioC = new candidato_js_1.Candidato(nome, email, estado, cep, descricao, competencias, Number(idade), cpf, formacao, idiomas);
         salvarCandidato(novoUsuarioC);
     });
 });
 function salvarCandidato(novoCandidato) {
-    exports.can = JSON.parse(localStorage.getItem('can') || '[]');
-    exports.can.push(novoCandidato);
-    localStorage.setItem('can', JSON.stringify(exports.can));
+    const candidatos = JSON.parse(localStorage.getItem('candidatos') || '[]');
+    candidatos.push(novoCandidato);
+    localStorage.setItem('candidatos', JSON.stringify(candidatos));
     console.log('Candidato salvo no localStorage');
 }
