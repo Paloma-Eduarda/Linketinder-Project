@@ -2,13 +2,13 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Pessoa = void 0;
 class Pessoa {
-    constructor(nome, email, estado, cep, descricao, competencias) {
-        this._nome = nome;
-        this._email = email;
-        this._estato = estado;
-        this._cep = cep;
-        this._descricao = descricao;
-        this._competencias = competencias;
+    constructor(_nome, _email, _estado, _cep, _descricao, _competencias) {
+        this._nome = _nome;
+        this._email = _email;
+        this._estato = _estado;
+        this._cep = _cep;
+        this._descricao = _descricao;
+        this._competencias = _competencias;
     }
     get nome() {
         return this._nome;
@@ -22,10 +22,10 @@ class Pessoa {
     set email(value) {
         this._email = value;
     }
-    get estado() {
+    get estato() {
         return this._estato;
     }
-    set estado(value) {
+    set estato(value) {
         this._estato = value;
     }
     get cep() {

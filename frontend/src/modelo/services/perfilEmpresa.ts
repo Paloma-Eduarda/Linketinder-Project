@@ -1,37 +1,65 @@
-import { candidatos } from "./listaDeCandidatos";
-import {Candidato} from '../classes/candidato.js'
-
+import { can } from "./cadastroCandidato"; // Certifique-se de que esta importação está correta
+import { Candidato } from '../classes/candidato.js';
 
 function renderCandidatos() {
-    const candidatoList = document.getElementById('candidato-list');
-    //let myItem = JSON.parse(localStorage.getItem(nomes));
+    console.log('Renderizando candidatos...');
+    const can = JSON.parse(localStorage.getItem('can') || '[]');
+
+    const candidatoList = (document.getElementById('candidato-list') as HTMLElement)
+
     if (candidatoList) {
-        candidatos.forEach(candidato => {
-            const candidatoDiv = document.createElement('div');
-            candidatoDiv.classList.add('candidato');
-            candidatoDiv.innerHTML = `<br><div class="card card border-light mb-3" 
-                    style="max-width: 50rem; text-align: center;
-                     padding: 20px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
-            <div>
-                    <h4 class="card-header" style="background-color: #863b67; color: white">Candidato Anonimo</h4>
-                 
-                    <p><strong>Competências:</strong> ${candidato.competencias.join(', ')}</p>
-                    <span><a href="#" class="card-link"><i class="bi bi-x-circle" style="color: darkred;"></i></a>
-                    <a href="#" class="card-link"><i class="bi bi-check-circle" style="color: green"></i></a>
-                    </span>
-                </div>
-              </div>     
-            </div><br>`;
 
-            candidatoList.appendChild(candidatoDiv);
-            console.log(candidato.idCandidato)
+        if (Array.isArray(can) && can.length > 0) {
 
-            const myItem = localStorage.getItem(candidato.idCandidato);
-            console.log(myItem);
-        });
+            can.forEach((candidatoData: any) => {
+
+                const candidato = new Candidato(
+                    candidatoData._nome,
+                    candidatoData._email,
+                    candidatoData._estado,
+                    candidatoData._cep,
+                    candidatoData._descricao,
+                    candidatoData._competencias,
+                    candidatoData._idade,
+                    candidatoData._cpf
+                );
+
+                const candidatoDiv = document.createElement('div');
+                candidatoDiv.classList.add('candidato');
+                candidatoDiv.innerHTML = `
+                    <br>
+                    <div class="card card border-light mb-3" 
+                        style="max-width: 50rem; text-align: center;
+                        padding: 20px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+                        <div>
+                            <h4 class="card-header" style="background-color: #863b67; color: white">
+                                Candidato Anônimo ${candidato.nome}
+                            </h4>
+                            <p><strong>Descrição: </strong>${candidato.descricao}</p>
+                            <p><strong>Competências: </strong>${candidato.competencias}</p>
+                            <span>
+                                <a href="#" class="card-link">
+                                    <i class="bi bi-x-circle" style="color: darkred;"></i>
+                                </a>
+                                <a href="#" class="card-link">
+                                    <i class="bi bi-check-circle" style="color: green"></i>
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                    <br>`;
+
+                candidatoList.appendChild(candidatoDiv);
+            });
+        } else {
+            console.log('Nenhum candidato disponível para renderizar.');
+        }
+    } else {
+        console.error("Elemento com ID 'candidato-list' não encontrado.");
     }
 }
 
-renderCandidatos();
-
+document.addEventListener("DOMContentLoaded", () => {
+    renderCandidatos();
+});
 

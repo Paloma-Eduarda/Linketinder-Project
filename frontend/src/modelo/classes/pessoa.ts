@@ -9,14 +9,15 @@ export abstract class Pessoa {
     private _descricao?: string
     private _competencias: any
 
-    constructor(nome: string, email: string, estado: string, cep:string, descricao:string, competencias:string) {
-        this._nome = nome
-        this._email = email
-        this._estato = estado
-        this._cep = cep
-        this._descricao = descricao
-        this._competencias = competencias
+    constructor(_nome: string, _email: string, _estado: string, _cep:string, _descricao:string, _competencias:string) {
+        this._nome = _nome
+        this._email = _email
+        this._estato = _estado
+        this._cep = _cep
+        this._descricao = _descricao
+        this._competencias = _competencias
     }
+
 
     get nome(): string {
         return this._nome;
@@ -33,11 +34,12 @@ export abstract class Pessoa {
     set email(value: string) {
         this._email = value;
     }
-    get estado(): string {
+
+    get estato(): string {
         return this._estato;
     }
 
-    set estado(value: string) {
+    set estato(value: string) {
         this._estato = value;
     }
 
@@ -64,5 +66,4 @@ export abstract class Pessoa {
     set competencias(value: any) {
         this._competencias = value;
     }
-
 }
