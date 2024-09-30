@@ -1,5 +1,4 @@
 import {Candidato} from '../classes/candidato.js'
-import {candidatos} from "./listaDeCandidatos";
 
 
 document.addEventListener("DOMContentLoaded",  function() {
@@ -43,6 +42,8 @@ function salvarCandidato(novoCandidato: Candidato) {
     candidatos.push(novoCandidato)
     localStorage.setItem('candidatos', JSON.stringify(candidatos))
     console.log('Candidato salvo no localStorage');
+
+
 }
 
 

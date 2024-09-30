@@ -1,4 +1,4 @@
-import {vagas} from "./listaDeVagas";
+
 import {Vaga} from "../classes/vaga"
 
 function renderVagas() {
