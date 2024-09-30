@@ -21,8 +21,10 @@ Essa é a versão frontend desenvolvida em TypeScript da aplicação **Linketind
 1. Clone o repositório ou baixe o código-fonte.
 2. Navegue até a pasta publica, caminho: frontend/src/public
 3. Instale as dependências
+   
         npm install
-4. Execute o projeto 
+5. Execute o projeto
+   
         npm start
 
 
