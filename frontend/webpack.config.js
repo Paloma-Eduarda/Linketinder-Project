@@ -6,7 +6,8 @@ module.exports = {
         cadastro:'./src/modelo/services/cadastroCandidato',
         telaCandidato:'./src/modelo/services/perfilCandidato',
         telaEmpresa:'./src/modelo/services/perfilEmpresa',
-        cadastroVaga:'./src/modelo/services/cadastrarVaga'
+        cadastroVaga:'./src/modelo/services/cadastrarVaga',
+        grafico:'./src/modelo/services/grafico'
     },
     devServer:{
         static: {
@@ -33,5 +34,8 @@ module.exports = {
             use: 'ts-loader',
             exclude: /node_modules/
         }]
+    },
+    externals: {
+        'chart.js': 'Chart' // Diz ao Webpack para não empacotar Chart.js
     }
 }
