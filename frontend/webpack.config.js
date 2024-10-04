@@ -7,7 +7,8 @@ module.exports = {
         telaCandidato:'./src/modelo/services/perfilCandidato',
         telaEmpresa:'./src/modelo/services/perfilEmpresa',
         cadastroVaga:'./src/modelo/services/cadastrarVaga',
-        grafico:'./src/modelo/services/grafico'
+        grafico:'./src/modelo/services/grafico',
+        cadastroEmpresa:'./src/modelo/services/CadastroEmpresa',
     },
     devServer:{
         static: {

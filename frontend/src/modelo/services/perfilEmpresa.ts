@@ -28,11 +28,11 @@ function listaCandidatos(candidate: any){
             candidatoData._estado,
             candidatoData._cep,
             candidatoData._descricao,
-            candidatoData._competencias,
             candidatoData._idade,
             candidatoData._cpf,
             candidatoData._formacao,
-            candidatoData._idiomas
+            candidatoData._idiomas,
+            candidatoData._competencias,
         );
         const arrays = candidato.competencias.split(',')
 

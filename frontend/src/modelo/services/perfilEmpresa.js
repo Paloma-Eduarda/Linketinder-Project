@@ -20,7 +20,7 @@ function renderCandidatos() {
 }
 function listaCandidatos(candidate) {
     candidate.forEach((candidatoData) => {
-        const candidato = new candidato_js_1.Candidato(candidatoData._nome, candidatoData._email, candidatoData._estado, candidatoData._cep, candidatoData._descricao, candidatoData._competencias, candidatoData._idade, candidatoData._cpf, candidatoData._formacao, candidatoData._idiomas);
+        const candidato = new candidato_js_1.Candidato(candidatoData._nome, candidatoData._email, candidatoData._estado, candidatoData._cep, candidatoData._descricao, candidatoData._idade, candidatoData._cpf, candidatoData._formacao, candidatoData._idiomas, candidatoData._competencias);
         const arrays = candidato.competencias.split(',');
         exports.comp = arrays.flat();
         const candidatoDiv = document.createElement('div');

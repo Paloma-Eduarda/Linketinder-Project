@@ -1,4 +1,3 @@
-import PessoaService from "../services/pessoaService";
 
 export abstract class Pessoa {
 
@@ -7,15 +6,13 @@ export abstract class Pessoa {
     private _estato:string
     private _cep: string
     private _descricao?: string
-    private _competencias: string
 
-    constructor(_nome: string, _email: string, _estado: string, _cep: string, _descricao: string, _competencias: string) {
+    constructor(_nome: string, _email: string, _estado: string, _cep: string, _descricao: string) {
         this._nome = _nome
         this._email = _email
         this._estato = _estado
         this._cep = _cep
         this._descricao = _descricao
-        this._competencias = _competencias
     }
 
 
@@ -59,11 +56,5 @@ export abstract class Pessoa {
         this._descricao = value;
     }
 
-    get competencias(): string {
-        return this._competencias;
-    }
 
-    set competencias(value: string) {
-        this._competencias = value;
-    }
 }

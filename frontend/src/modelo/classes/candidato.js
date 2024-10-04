@@ -3,15 +3,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Candidato = void 0;
 const pessoa_js_1 = require("./pessoa.js");
 class Candidato extends pessoa_js_1.Pessoa {
-    // private _experiencias: string
-    constructor(nome, email, estado, cep, descricao, competencias, idade, cpf, formacao, idiomas) {
-        super(nome, email, estado, cep, descricao, competencias);
+    constructor(nome, email, estado, cep, descricao, idade, cpf, formacao, idiomas, competencias) {
+        super(nome, email, estado, cep, descricao);
         this._idCandidato = Candidato.contador++;
         this._idade = idade;
         this._cpf = cpf;
         this._formacao = formacao;
         this._idiomas = idiomas;
-        //this._experiencias = experiencias
+        this._competencias = competencias;
     }
     get cpf() {
         return this._cpf;
@@ -26,7 +25,7 @@ class Candidato extends pessoa_js_1.Pessoa {
         this._idade = value;
     }
     get idCandidato() {
-        return `${this._idCandidato}TECH`; // Retorna o ID formatado
+        return this._idCandidato;
     }
     get formacao() {
         return this._formacao;
@@ -39,6 +38,12 @@ class Candidato extends pessoa_js_1.Pessoa {
     }
     set idiomas(value) {
         this._idiomas = value;
+    }
+    get competencias() {
+        return this._competencias;
+    }
+    set competencias(value) {
+        this._competencias = value;
     }
 }
 exports.Candidato = Candidato;

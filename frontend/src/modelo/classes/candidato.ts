@@ -7,18 +7,17 @@ export class Candidato extends Pessoa{
     private _cpf:string
     private _formacao:string
     private _idiomas: string
-   // private _experiencias: string
-
+    private _competencias: string
 
     constructor(nome: string, email: string, estado: string, cep: string, descricao: string,
-                competencias: string,idade: number, cpf: string, formacao:string, idiomas:string) {
-        super(nome, email, estado, cep, descricao, competencias)
+                idade: number, cpf: string, formacao:string, idiomas:string, competencias: string ) {
+        super(nome, email, estado, cep, descricao)
         this._idCandidato = Candidato.contador++
         this._idade = idade
         this._cpf = cpf
         this._formacao = formacao
         this._idiomas = idiomas
-        //this._experiencias = experiencias
+        this._competencias = competencias
     }
     get cpf(): string {
         return this._cpf;
@@ -35,8 +34,8 @@ export class Candidato extends Pessoa{
         this._idade = value;
     }
 
-    get idCandidato(): string {
-        return `${this._idCandidato}TECH`; // Retorna o ID formatado
+    get idCandidato(): number {
+        return this._idCandidato
     }
 
 
@@ -56,11 +55,12 @@ export class Candidato extends Pessoa{
         this._idiomas = value;
     }
 
-    // get experiencias(): string {
-    //     return this._experiencias;
-    // }
-    //
-    // set experiencias(value: string) {
-    //     this._experiencias = value;
-    // }
+
+    get competencias(): string {
+        return this._competencias;
+    }
+
+    set competencias(value: string) {
+        this._competencias = value;
+    }
 }

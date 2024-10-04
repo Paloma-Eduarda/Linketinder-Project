@@ -1,5 +1,5 @@
 import {Candidato} from '../classes/candidato.js'
-import {nodeName} from "jquery";
+import {validaEmail, validaIdade, validaNome, validaCpf, validaCep} from "./ValidarDados";
 
 document.addEventListener("DOMContentLoaded",  function() {
     const salvarBtn = document.getElementById('enviar') as HTMLButtonElement;
@@ -24,11 +24,11 @@ document.addEventListener("DOMContentLoaded",  function() {
             estado,
             cep,
             descricao,
-            competencias,
             Number(idade),
             cpf,
             formacao,
             idiomas,
+            competencias
             )
         if(validaEmail(email) && validaNome(nome) && validaCpf(cpf) && validaIdade(idade) && validaCep(cep)){
             salvarCandidato(novoUsuarioC)
@@ -45,54 +45,7 @@ function salvarCandidato(novoCandidato: Candidato) {
     console.log('Candidato salvo no localStorage');
 
 }
-function validaNome(nome:string): boolean{
-    const regex_nome = /^[A-zÁ-ú]{2,}$/g
-    const  match = regex_nome.test(nome)
 
-    if(!match){
-        alert('Nome invalido')
-    }
-    return match
-}
-function validaEmail(email:string): boolean{
-    const regex_email = /\S+@\w+\.\w{2,6}(\.\w{2})?/g
-
-    const  match = regex_email.test(email)
-
-    if(!match){
-        alert('Email invalido')
-    }
-    return match
-
-}
-function validaCpf(cpf:string): boolean{
-    const regex_cpf = /^\d{3}\.?\d{3}\.?\d{3}-?\d{2}$/g
-    const match = regex_cpf.test(cpf)
-
-    if(!match){
-        alert('CPF invalido')
-    }
-    return match
-}
-function validaCep(cep: string): boolean{
-    const regex_cep = /^\d{5}-?\d{3}$/g
-    const match = regex_cep.test(cep)
-
-    if(!match){
-        alert('CEP invalido')
-    }
-    return match
-}
-
-function validaIdade(idade:string){
-    const regex_idade = /^(1[89]|[2-9]\d|100)$/
-    const match = regex_idade.test(idade)
-
-    if(!match){
-        alert('Idade invalido')
-    }
-    return match
-}
 
 
 
