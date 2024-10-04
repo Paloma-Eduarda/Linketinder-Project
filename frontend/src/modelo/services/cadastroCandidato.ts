@@ -1,5 +1,5 @@
 import {Candidato} from '../classes/candidato.js'
-
+import {nodeName} from "jquery";
 
 document.addEventListener("DOMContentLoaded",  function() {
     const salvarBtn = document.getElementById('enviar') as HTMLButtonElement;
@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded",  function() {
         const descricao = (document.getElementById('descricao') as HTMLInputElement).value;
         const formacao = (document.getElementById('formacao') as HTMLInputElement).value;
         const idiomas = (document.getElementById('idiomas') as HTMLInputElement).value;
-        const experiencia = (document.getElementById('experiencia') as HTMLInputElement).value;
+
 
         const novoUsuarioC = new Candidato(
             nome,
@@ -30,8 +30,9 @@ document.addEventListener("DOMContentLoaded",  function() {
             formacao,
             idiomas,
             )
-
-        salvarCandidato(novoUsuarioC)
+        if(validaEmail(email) && validaNome(nome) && validaCpf(cpf) && validaIdade(idade) && validaCep(cep)){
+            salvarCandidato(novoUsuarioC)
+        }
 
     })
 
@@ -43,7 +44,57 @@ function salvarCandidato(novoCandidato: Candidato) {
     localStorage.setItem('candidatos', JSON.stringify(candidatos))
     console.log('Candidato salvo no localStorage');
 
+}
+function validaNome(nome:string): boolean{
+    const regex_nome = /^[A-zÁ-ú]{2,}$/g
+    const  match = regex_nome.test(nome)
+
+    if(!match){
+        alert('Nome invalido')
+    }
+    return match
+}
+function validaEmail(email:string): boolean{
+    const regex_email = /\S+@\w+\.\w{2,6}(\.\w{2})?/g
+
+    const  match = regex_email.test(email)
+
+    if(!match){
+        alert('Email invalido')
+    }
+    return match
 
 }
+function validaCpf(cpf:string): boolean{
+    const regex_cpf = /^\d{3}\.?\d{3}\.?\d{3}-?\d{2}$/g
+    const match = regex_cpf.test(cpf)
+
+    if(!match){
+        alert('CPF invalido')
+    }
+    return match
+}
+function validaCep(cep: string): boolean{
+    const regex_cep = /^\d{5}-?\d{3}$/g
+    const match = regex_cep.test(cep)
+
+    if(!match){
+        alert('CEP invalido')
+    }
+    return match
+}
+
+function validaIdade(idade:string){
+    const regex_idade = /^(1[89]|[2-9]\d|100)$/
+    const match = regex_idade.test(idade)
+
+    if(!match){
+        alert('Idade invalido')
+    }
+    return match
+}
+
+
+
 
 

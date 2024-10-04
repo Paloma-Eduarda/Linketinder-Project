@@ -5,7 +5,7 @@
 Essa é a versão frontend desenvolvida em TypeScript da aplicação **Linketinder** que combina a funcionalidade de Match do Tinder, com o campo individual de competências do Linkedin.
 
 ## Funcionalidades
-- **Cadastrar Vaga, Cadastrar Empresa e Cadastrar Candidato**    
+- **Cadastrar Vaga, Cadastrar Empresa e Cadastrar Candidato    
 - **Visualizar Vagas e Candidatos**: Mostra todas as Vagas e candidatos cadastradas
 
 ## Tecnologias
@@ -13,19 +13,17 @@ Essa é a versão frontend desenvolvida em TypeScript da aplicação **Linketind
 - HTML
 - CSS
 - JavaScript
-- Webpack
+- webpack
 - IntelliJ IDEA ou qualquer IDE compatível com Groovy.
 
 ## Como Executar
 
 1. Clone o repositório ou baixe o código-fonte.
 2. Navegue até a pasta publica, caminho: frontend/src/public
-3. Instale as dependências
-   
-        npm install
-5. Execute o projeto
-   
-        npm start
+3. Instale as dependências 
+    npm install
+4. Execute o projeto 
+    npm start
 
 
 Desenvolvido por Paloma Eduarda
