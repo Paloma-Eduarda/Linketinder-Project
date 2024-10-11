@@ -12,6 +12,8 @@ O **Linketinder** é uma aplicação Groovy que combina a funcionalidade de Matc
 
 - Groovy.
 - IntelliJ IDEA ou qualquer IDE compatível com Groovy.
+- PostgreSQL
+- Workbench (Criação de modelo)
 
 ## Como Executar
 
