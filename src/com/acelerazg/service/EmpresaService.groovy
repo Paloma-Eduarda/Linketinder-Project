@@ -6,10 +6,7 @@ class EmpresaService implements PessoaService{
     List<Empresa> empresas = [];
     @Override
     List listar() {
-        //return só empresa
-        empresas.each { empresa ->
-            return empresa
-        }
+        return empresas
     }
 
 
