@@ -1,7 +1,4 @@
 package com.acelerazg.DAO
-
-import com.acelerazg.classes.Competencia
-import com.acelerazg.classes.Empresa
 import com.acelerazg.classes.Vaga
 import groovy.sql.Sql
 
@@ -9,6 +6,7 @@ import java.sql.SQLException
 
 class VagaDAO {
     def sql
+
     VagaDAO() {
         try {
             def url = 'jdbc:postgresql://localhost:5432/linketinder'

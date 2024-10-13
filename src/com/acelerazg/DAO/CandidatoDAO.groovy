@@ -24,7 +24,7 @@ class CandidatoDAO {
         }
     }
 
-    List<Candidato> listar(){
+    def listar = { ->
         List<Candidato> candidatos = []
 
         sql.eachRow('SELECT * FROM candidato') { row ->

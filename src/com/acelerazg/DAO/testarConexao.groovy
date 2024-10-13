@@ -29,7 +29,7 @@ CompetenciaDAO competenciaDAO =  new CompetenciaDAO()
 //)
 //candidatoDAO.inserir(candidato1)
 //println candidatoDAO.listar()
-//EmpresaDAO empresaDAO = new EmpresaDAO()
+EmpresaDAO empresaDAO = new EmpresaDAO()
 //Empresa empresa1 = new Empresa(
 //        '285623',
 //        'Empresa de Papel Michael',
