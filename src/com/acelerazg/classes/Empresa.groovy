@@ -9,4 +9,9 @@ class Empresa extends Pessoa {
         this.cnpj = cnpj
         this.id = id
     }
+
+    Empresa(String cep, String descricao, String email, String senha, String nome, int id_pais, String cnpj) {
+        super(cep, descricao, email, senha, nome, id_pais)
+        this.cnpj = cnpj
+    }
 }

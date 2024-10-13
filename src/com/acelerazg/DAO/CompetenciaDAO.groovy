@@ -34,9 +34,13 @@ class CompetenciaDAO {
     }
     void inserir(Competencia competencia) {
         String inserir = 'INSERT INTO competencias (nome) VALUES (?)'
-        sql.executeInsert(inserir, [competencia.nome])
+        try {
+            sql.executeInsert(inserir, [competencia.nome])
+            println("Competencia inserida com sucesso")
 
-        println("Competencia inserida com sucesso")
+        }catch(SQLException ex){
+            ex.printStackTrace()
+        }
     }
     void alterar(Competencia competencia){
         String alterar = 'UPDATE competencias SET nome=? WHERE id=?'

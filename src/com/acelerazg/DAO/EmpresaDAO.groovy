@@ -1,5 +1,6 @@
 package com.acelerazg.DAO
 
+import com.acelerazg.classes.Competencia
 import com.acelerazg.classes.Empresa
 import com.acelerazg.classes.Vaga
 import groovy.sql.Sql
@@ -32,5 +33,16 @@ class EmpresaDAO {
         }
 
         return empresas
+    }
+    void inserir(Empresa empresa) {
+        String inserir = 'INSERT INTO empresa (nome, cnpj, descricao, cep, senha, id_pais, email) VALUES (?,?,?,?,?,?,?)'
+        try {
+            sql.executeInsert(inserir, [empresa.nome, empresa.cnpj, empresa.descricao, empresa.cep, empresa.senha,
+            empresa.id_pais, empresa.email])
+            println("Empresa inserida com sucesso")
+
+        }catch(SQLException ex){
+            ex.printStackTrace()
+        }
     }
 }
