@@ -96,7 +96,7 @@ class MenuCandidato {
         scanner.nextLine()
 
         candidatoDAO.excluir(id)
-        println "Canidato Excluido com sucesso"
+        println "Canidato excluido com sucesso"
 
     }
 

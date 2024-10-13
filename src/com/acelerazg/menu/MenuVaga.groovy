@@ -1,11 +1,11 @@
 package com.acelerazg.menu
 import com.acelerazg.DAO.VagaDAO
-import com.acelerazg.classes.Empresa
 import com.acelerazg.classes.Vaga
 
 class MenuVaga {
-    Vaga vaga
+    Scanner scanner = new Scanner(System.in)
 
+    Vaga vaga
     VagaDAO vagaDAO = new VagaDAO()
 
     void gerenciarVaga(){
@@ -26,6 +26,8 @@ class MenuVaga {
             switch(opcao) {
                 case 1:
                     println "\nVagas cadastrados:"
+
+                    //melhorar
                     println vagaDAO.listar()
 
                     break
@@ -38,6 +40,8 @@ class MenuVaga {
                     break
                 case 4:
                     println "Remover uma Vaga"
+                    println vagaDAO.listar()
+                    excluirVaga()
                     break
                 case 5:
                     println "Saindo do programa..."
@@ -71,6 +75,17 @@ class MenuVaga {
 
         vaga = new Vaga(cidade, descricao, empresa, estado, nome)
         vagaDAO.inserir(vaga)
+    }
+    void excluirVaga(){
+
+        println "Insira o id da vaga que sera excluida:"
+
+        int id = scanner.nextInt()
+        scanner.nextLine()
+
+        vagaDAO.excluir(id)
+        println "Vaga excluida com sucesso"
+
     }
 
 }

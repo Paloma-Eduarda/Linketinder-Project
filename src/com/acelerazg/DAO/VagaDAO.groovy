@@ -41,4 +41,13 @@ class VagaDAO {
             ex.printStackTrace()
         }
     }
+    void excluir(int id) {
+        String excluir = 'DELETE FROM vagas WHERE id = ?'
+        try {
+            sql.execute(excluir, id)
+
+        }catch (SQLException ex){
+            ex.printStackTrace()
+        }
+    }
 }

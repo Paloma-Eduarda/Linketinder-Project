@@ -91,13 +91,13 @@ class MenuEmpresa {
     }
     void excluirEmpresa(){
 
-        println "Insira o id da Empresa que sera excluido:"
+        println "Insira o id da Empresa que sera excluida:"
 
         int id = scanner.nextInt()
         scanner.nextLine()
 
         empresaDAO.excluir(id)
-        println "Empresa Excluida com sucesso"
+        println "Empresa excluida com sucesso"
 
     }
 

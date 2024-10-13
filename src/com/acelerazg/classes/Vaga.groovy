@@ -27,13 +27,12 @@ class Vaga {
 
     @Override
     public String toString() {
-        return "Vaga{" +
-                "cidade='" + cidade + '\'' +
-                ", id=" + id +
-                ", nome='" + nome + '\'' +
-                ", descricao='" + descricao + '\'' +
-                ", id_empresa=" + id_empresa +
-                ", id_estado=" + id_estado +
-                '} \n';
+        return "\nVaga:" +
+                "cidade = " + cidade + '\'' +
+                ", id = " + id +
+                ", nome = " + nome + '\'' +
+                ", descricao = " + descricao + '\'' +
+                ", id_empresa = " + id_empresa +
+                ", id_estado = " + id_estado;
     }
 }
