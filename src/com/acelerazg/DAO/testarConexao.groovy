@@ -2,6 +2,7 @@ package com.acelerazg.DAO
 
 import com.acelerazg.classes.Candidato
 import com.acelerazg.classes.Empresa
+import com.acelerazg.classes.Vaga
 
 CompetenciaDAO competenciaDAO =  new CompetenciaDAO()
 //Competencia competencia = new Competencia('Word')
@@ -28,15 +29,25 @@ CompetenciaDAO competenciaDAO =  new CompetenciaDAO()
 //)
 //candidatoDAO.inserir(candidato1)
 //println candidatoDAO.listar()
-EmpresaDAO empresaDAO = new EmpresaDAO()
-Empresa empresa1 = new Empresa(
-        '285623',
-        'Empresa de Papel Michael',
-        'papel@gmail.com',
-        'asdadgsga',
-        'Dumder Muflen',
-        2,
-        '39457252'
-)
-empresaDAO.inserir(empresa1)
-println empresaDAO.listar()
+//EmpresaDAO empresaDAO = new EmpresaDAO()
+//Empresa empresa1 = new Empresa(
+//        '285623',
+//        'Empresa de Papel Michael',
+//        'papel@gmail.com',
+//        'asdadgsga',
+//        'Dumder Muflen',
+//        2,
+//        '39457252'
+//)
+//empresaDAO.inserir(empresa1)
+//println empresaDAO.listar()
+VagaDAO vagaDAO = new VagaDAO()
+//Vaga vaga = new Vaga(
+//        'natal',
+//        'Recursos Humanos',
+//        1,
+//        2,
+//        'Rh'
+//)
+
+println vagaDAO.listar()

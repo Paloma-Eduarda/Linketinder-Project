@@ -17,6 +17,13 @@ class Vaga {
         this.nome = nome
     }
 
+    Vaga(String cidade, String descricao, int id_empresa, int id_estado, String nome) {
+        this.cidade = cidade
+        this.descricao = descricao
+        this.id_empresa = id_empresa
+        this.id_estado = id_estado
+        this.nome = nome
+    }
 
     @Override
     public String toString() {
@@ -27,6 +34,6 @@ class Vaga {
                 ", descricao='" + descricao + '\'' +
                 ", id_empresa=" + id_empresa +
                 ", id_estado=" + id_estado +
-                '}';
+                '} \n';
     }
 }
