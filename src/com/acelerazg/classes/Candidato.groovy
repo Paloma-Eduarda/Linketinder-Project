@@ -20,4 +20,15 @@ class Candidato extends Pessoa{
         this.data_nascimento = data_nascimento
         this.sobrenome = sobrenome
     }
+
+
+    @Override
+    public String toString() {
+        return "\nCandidato:" +
+                "id =" + id +
+                ", nome = " + nome +
+                ", sobrenome ='" + sobrenome +
+                ", email = " + email +
+                ", descrição" + descricao + '\'' ;
+    }
 }

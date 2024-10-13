@@ -1,11 +1,14 @@
 
 import com.acelerazg.menu.MenuCandidato
+import com.acelerazg.menu.MenuEmpresa
 
 
 static void main(String[] args) {
 
   def scanner = new Scanner(System.in)
-  def menuCandidato = new MenuCandidato()
+  MenuCandidato menuCandidato = new MenuCandidato()
+  MenuEmpresa menuEmpresa = new MenuEmpresa()
+
   while (true) {
     println "\nMenu:"
     println "1. Gerenciar Empresas"
@@ -18,6 +21,7 @@ static void main(String[] args) {
     switch(opcao) {
       case 1:
         println "\nEmpresas cadastradas:"
+        menuEmpresa.gerenciarEmpresa()
         break
       case 2:
         println "\nCandidatos cadastradas:"

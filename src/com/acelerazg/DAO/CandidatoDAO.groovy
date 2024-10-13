@@ -1,14 +1,13 @@
 package com.acelerazg.DAO
 
 import com.acelerazg.classes.Candidato
-import com.acelerazg.classes.Competencia
-import com.acelerazg.classes.Empresa
 import groovy.sql.Sql
 
 import java.sql.SQLException
 
 class CandidatoDAO {
     def sql
+
     CandidatoDAO() {
         try {
             def url = 'jdbc:postgresql://localhost:5432/linketinder'
@@ -34,17 +33,27 @@ class CandidatoDAO {
 
         return candidatos
     }
+
     void inserir(Candidato candidato) {
         String inserir = 'INSERT INTO candidato (nome, sobrenome, data_nascimento, cpf, email,' +
                 'cep, descricao, id_pais, senha) VALUES (?,?,?,?,?,?,?,?,?)'
         try {
             sql.executeInsert(inserir, [candidato.nome, candidato.sobrenome, candidato.data_nascimento,
-            candidato.cpf, candidato.email, candidato.cep, candidato.descricao, candidato.id_pais, candidato.senha])
+                                        candidato.cpf, candidato.email, candidato.cep, candidato.descricao, candidato.id_pais, candidato.senha])
             println("Candidato inserido com sucesso")
 
-        }catch(SQLException ex){
+        } catch (SQLException ex) {
+            ex.printStackTrace()
+        }
+    }
+
+    void excluir(int id) {
+        String excluir = 'DELETE FROM candidato WHERE id = ?'
+        try {
+            sql.execute(excluir, id)
+
+        }catch (SQLException ex){
             ex.printStackTrace()
         }
     }
 }
-

@@ -43,4 +43,14 @@ class EmpresaDAO {
             ex.printStackTrace()
         }
     }
+    void excluir(int id) {
+        String excluir = 'DELETE FROM empresa WHERE id = ?'
+        try {
+            sql.execute(excluir, id)
+
+        }catch (SQLException ex){
+            ex.printStackTrace()
+        }
+    }
+
 }
