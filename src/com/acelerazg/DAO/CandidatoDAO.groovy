@@ -34,17 +34,30 @@ class CandidatoDAO {
         return candidatos
     }
 
-    void inserir(Candidato candidato) {
+    int inserir(Candidato candidato) {
         String inserir = 'INSERT INTO candidato (nome, sobrenome, data_nascimento, cpf, email,' +
                 'cep, descricao, id_pais, senha) VALUES (?,?,?,?,?,?,?,?,?)'
         try {
-            sql.executeInsert(inserir, [candidato.nome, candidato.sobrenome, candidato.data_nascimento,
-                                        candidato.cpf, candidato.email, candidato.cep, candidato.descricao, candidato.id_pais, candidato.senha])
-            println("Candidato inserido com sucesso")
+            def generatedKeys = sql.executeInsert(inserir, [
+                    candidato.nome,
+                    candidato.sobrenome,
+                    candidato.data_nascimento,
+                    candidato.cpf,
+                    candidato.email,
+                    candidato.cep,
+                    candidato.descricao,
+                    candidato.id_pais,
+                    candidato.senha
+            ])
+
+            candidato.id = generatedKeys[0][0]
+            println("Candidato inserido com sucesso. ID gerado: ${candidato.id}")
+            return  candidato.id
 
         } catch (SQLException ex) {
             ex.printStackTrace()
         }
+
     }
 
     void excluir(int id) {

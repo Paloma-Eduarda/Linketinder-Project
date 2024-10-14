@@ -29,7 +29,7 @@ CompetenciaDAO competenciaDAO =  new CompetenciaDAO()
 //)
 //candidatoDAO.inserir(candidato1)
 //println candidatoDAO.listar()
-EmpresaDAO empresaDAO = new EmpresaDAO()
+// empresaDAO = new EmpresaDAO()
 //Empresa empresa1 = new Empresa(
 //        '285623',
 //        'Empresa de Papel Michael',
@@ -41,7 +41,7 @@ EmpresaDAO empresaDAO = new EmpresaDAO()
 //)
 //empresaDAO.inserir(empresa1)
 //println empresaDAO.listar()
-VagaDAO vagaDAO = new VagaDAO()
+//VagaDAO vagaDAO = new VagaDAO()
 //Vaga vaga = new Vaga(
 //        'natal',
 //        'Recursos Humanos',
@@ -50,4 +50,4 @@ VagaDAO vagaDAO = new VagaDAO()
 //        'Rh'
 //)
 
-println vagaDAO.listar()
+//println vagaDAO.listar()

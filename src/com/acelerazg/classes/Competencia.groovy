@@ -15,9 +15,8 @@ class Competencia {
 
     @Override
     public String toString() {
-        return "Competencia{" +
+        return "Competencia:" +
                 "id=" + id +
-                ", nome='" + nome + '\'' +
-                '}';
+                ", nome='" + nome + '\'';
     }
 }

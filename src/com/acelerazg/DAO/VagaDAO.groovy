@@ -22,7 +22,7 @@ class VagaDAO {
         }
     }
 
-    List<Vaga> listar(){
+    List<Vaga> listar(int id){
         List<Vaga> vagas = []
 
         sql.eachRow('SELECT * FROM vagas') { row ->

@@ -42,13 +42,24 @@ class CompetenciaDAO {
             ex.printStackTrace()
         }
     }
-    void alterar(Competencia competencia){
-        String alterar = 'UPDATE competencias SET nome=? WHERE id=?'
-        //try {
-            sql.excuteUp(alterar, [competencia.nome])
-      //  }
-    }
-    void remover(int id){
+    void excluir(int id){
+        String excluir = 'DELETE FROM competencias WHERE id = ?'
+        try {
+            sql.execute(excluir, id)
 
+        }catch (SQLException ex){
+            ex.printStackTrace()
+        }
     }
+    void inserirCompetenciaCandidato(int idCandidato, int idCompetencia){
+        String inserir = 'INSERT INTO competencias_candidato (id_competencias, id_candidato) VALUES (?,?)'
+        try {
+            sql.executeInsert(inserir, [idCompetencia, idCandidato])
+            println("Competencia inserida com sucesso")
+
+        }catch(SQLException ex){
+            ex.printStackTrace()
+        }
+    }
+
 }

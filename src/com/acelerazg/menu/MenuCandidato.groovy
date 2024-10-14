@@ -1,12 +1,16 @@
 package com.acelerazg.menu
 
 import com.acelerazg.DAO.CandidatoDAO
+import com.acelerazg.DAO.CompetenciaDAO
 import com.acelerazg.classes.Candidato
 
 class MenuCandidato {
     Candidato candidato
-
     CandidatoDAO candidatoDAO = new CandidatoDAO()
+
+    CompetenciaDAO competenciaDAO = new CompetenciaDAO()
+    MenuCompetencia menuCompetencia = new MenuCompetencia()
+
     Scanner scanner = new Scanner(System.in)
 
    void gerenciarCandidato(){
@@ -14,6 +18,7 @@ class MenuCandidato {
         def scanner = new Scanner(System.in)
 
         while (true) {
+            println competenciaDAO.listar().id
             println('''
               1 - Listar candidatos
               2 - Inserir um candidato
@@ -86,7 +91,9 @@ class MenuCandidato {
         String senha = scanner.nextLine()
 
         candidato = new Candidato(cep, descricao, email, senha, nome, pais, cpf, sqlDate, sobrenome)
-        candidatoDAO.inserir(candidato)
+        def idCandidato = candidatoDAO.inserir(candidato)
+
+        inserirCompetencias(idCandidato)
     }
     void excluirCandidato(){
 
@@ -98,6 +105,24 @@ class MenuCandidato {
         candidatoDAO.excluir(id)
         println "Canidato excluido com sucesso"
 
+    }
+    void inserirCompetencias(int id_candidato){
+        while (true){
+            println competenciaDAO.listar()
+            println "Digite o id da competencias que deseja adicionar"
+            println("Não encontrou a competência que precisa? Digite 0 e Adicione uma nova")
+
+            def opcaoComp = scanner.nextInt()
+
+            if(competenciaDAO.listar()*.id.contains(opcaoComp)){
+                competenciaDAO.inserirCompetenciaCandidato(id_candidato, opcaoComp)
+            }else{
+                println "Id invalido, digite um id valido"
+            }
+            if(opcaoComp == 0){
+                menuCompetencia.inserirCompetencia()
+            }
+        }
     }
 
 }
