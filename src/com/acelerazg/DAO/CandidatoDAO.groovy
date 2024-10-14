@@ -1,6 +1,7 @@
 package com.acelerazg.DAO
 
 import com.acelerazg.classes.Candidato
+import com.acelerazg.classes.Empresa
 import groovy.sql.Sql
 
 import java.sql.SQLException
@@ -23,7 +24,7 @@ class CandidatoDAO {
         }
     }
 
-    def listar = { ->
+    List<Candidato> listar(){
         List<Candidato> candidatos = []
 
         sql.eachRow('SELECT * FROM candidato') { row ->
@@ -62,7 +63,10 @@ class CandidatoDAO {
 
     void excluir(int id) {
         String excluir = 'DELETE FROM candidato WHERE id = ?'
+        String exluirComp = 'DELETE FROM competencias_candidato WHERE id_candidato = ?'
+
         try {
+            sql.execute(exluirComp, id)
             sql.execute(excluir, id)
 
         }catch (SQLException ex){

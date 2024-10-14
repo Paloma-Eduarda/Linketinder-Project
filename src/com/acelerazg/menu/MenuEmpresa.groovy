@@ -1,6 +1,7 @@
 package com.acelerazg.menu
 
 import com.acelerazg.DAO.EmpresaDAO
+import com.acelerazg.DAO.PaisDAO
 import com.acelerazg.classes.Empresa
 
 class MenuEmpresa {
@@ -10,6 +11,7 @@ class MenuEmpresa {
 
     Empresa empresa
     EmpresaDAO empresaDAO = new EmpresaDAO()
+    PaisDAO paisDAO = new PaisDAO()
 
     void gerenciarEmpresa(){
 
@@ -64,6 +66,8 @@ class MenuEmpresa {
         Scanner scanner = new Scanner(System.in)
 
         println "Adicione o País da Empresa:"
+        paisDAO.consultarPaises()
+
         int pais = scanner.nextInt()
         scanner.nextLine()
 

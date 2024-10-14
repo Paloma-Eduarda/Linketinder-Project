@@ -29,6 +29,6 @@ class Candidato extends Pessoa{
                 ", nome = " + nome +
                 ", sobrenome ='" + sobrenome +
                 ", email = " + email +
-                ", descrição" + descricao + '\'' ;
+                ", descrição = " + descricao + '\'' ;
     }
 }

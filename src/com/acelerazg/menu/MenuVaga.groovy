@@ -45,7 +45,7 @@ class MenuVaga {
                     break
                 case 5:
                     println "Saindo do programa..."
-                    break
+                    return
                 default:
                     println "Opção inválida! Por favor, escolha uma opção válida."
             }

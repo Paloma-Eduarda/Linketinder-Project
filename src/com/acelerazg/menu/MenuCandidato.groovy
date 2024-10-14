@@ -2,6 +2,7 @@ package com.acelerazg.menu
 
 import com.acelerazg.DAO.CandidatoDAO
 import com.acelerazg.DAO.CompetenciaDAO
+import com.acelerazg.DAO.PaisDAO
 import com.acelerazg.classes.Candidato
 
 class MenuCandidato {
@@ -10,6 +11,7 @@ class MenuCandidato {
 
     CompetenciaDAO competenciaDAO = new CompetenciaDAO()
     MenuCompetencia menuCompetencia = new MenuCompetencia()
+    PaisDAO paisDAO = new PaisDAO()
 
     Scanner scanner = new Scanner(System.in)
 
@@ -18,7 +20,6 @@ class MenuCandidato {
         def scanner = new Scanner(System.in)
 
         while (true) {
-            println competenciaDAO.listar().id
             println('''
               1 - Listar candidatos
               2 - Inserir um candidato
@@ -48,8 +49,8 @@ class MenuCandidato {
                     excluirCandidato()
                     break
                 case 5:
-                    println "Saindo do programa..."
-                    break
+                    println "Saindo..."
+                    return
                 default:
                     println "Opção inválida! Por favor, escolha uma opção válida."
             }
@@ -60,7 +61,9 @@ class MenuCandidato {
 
         Scanner scanner = new Scanner(System.in)
 
-        println "Adicione o País do Candidato:"
+        println "Adicione o id País do Candidato:"
+        paisDAO.consultarPaises()
+
         int pais = scanner.nextInt()
         scanner.nextLine()
 
@@ -110,17 +113,20 @@ class MenuCandidato {
         while (true){
             println competenciaDAO.listar()
             println "Digite o id da competencias que deseja adicionar"
-            println("Não encontrou a competência que precisa? Digite 0 e Adicione uma nova")
+            println "Não encontrou a competência que precisa?"
+            println  "Digite 0 e Adicione uma nova, ou -1 para sair"
 
             def opcaoComp = scanner.nextInt()
 
             if(competenciaDAO.listar()*.id.contains(opcaoComp)){
                 competenciaDAO.inserirCompetenciaCandidato(id_candidato, opcaoComp)
-            }else{
-                println "Id invalido, digite um id valido"
-            }
-            if(opcaoComp == 0){
+            }else if(opcaoComp == 0){
                 menuCompetencia.inserirCompetencia()
+            }else if(opcaoComp == -1){
+                break
+            }
+            else{
+                println "Opção ou id invalido, digite um id valido"
             }
         }
     }
