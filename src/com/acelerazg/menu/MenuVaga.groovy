@@ -1,4 +1,6 @@
 package com.acelerazg.menu
+
+import com.acelerazg.DAO.CompetenciaDAO
 import com.acelerazg.DAO.VagaDAO
 import com.acelerazg.classes.Vaga
 
@@ -8,7 +10,10 @@ class MenuVaga {
     Vaga vaga
     VagaDAO vagaDAO = new VagaDAO()
 
-    void gerenciarVaga(){
+    CompetenciaDAO competenciaDAO = new CompetenciaDAO()
+    MenuCompetencia menuCompetencia = new MenuCompetencia()
+
+    void gerenciarVaga(int id){
 
         def scanner = new Scanner(System.in)
 
@@ -28,19 +33,19 @@ class MenuVaga {
                     println "\nVagas cadastrados:"
 
                     //melhorar
-                    println vagaDAO.listar()
+                    println vagaDAO.listar(id)
 
                     break
                 case 2:
                     println "\n Inserir Vaga:"
-                    inserirVaga()
+                    inserirVaga(id)
                     break
                 case 3:
                     println "Atualizar uma Vaga"
                     break
                 case 4:
                     println "Remover uma Vaga"
-                    println vagaDAO.listar()
+                    println vagaDAO.listar(id)
                     excluirVaga()
                     break
                 case 5:
@@ -52,13 +57,9 @@ class MenuVaga {
         }
 
     }
-    void inserirVaga(){
+    void inserirVaga(int id){
 
         Scanner scanner = new Scanner(System.in)
-
-        println "Digite o id da Empresa"
-        int empresa = scanner.nextInt()
-        scanner.nextLine()
 
         println "Adicione a Estado da Vaga:"
         int estado = scanner.nextInt()
@@ -73,8 +74,11 @@ class MenuVaga {
         println "Descrição da Vaga:"
         String descricao = scanner.nextLine()
 
-        vaga = new Vaga(cidade, descricao, empresa, estado, nome)
-        vagaDAO.inserir(vaga)
+
+        vaga = new Vaga(cidade, descricao, id, estado, nome)
+        def id_vaga = vagaDAO.inserir(vaga)
+
+        inserirCompetencias(id_vaga)
     }
     void excluirVaga(){
 
@@ -86,6 +90,28 @@ class MenuVaga {
         vagaDAO.excluir(id)
         println "Vaga excluida com sucesso"
 
+    }
+    void inserirCompetencias(int id_vaga){
+
+        while (true){
+            println competenciaDAO.listar()
+            println "Digite o id da competencias que deseja adicionar"
+            println "Não encontrou a competência que precisa?"
+            println  "Digite 0 e Adicione uma nova, ou -1 para sair"
+
+            def opcaoComp = scanner.nextInt()
+
+            if(competenciaDAO.listar()*.id.contains(opcaoComp)){
+                competenciaDAO.inserirCompetenciaVaga(id_vaga, opcaoComp)
+            }else if(opcaoComp == 0){
+                menuCompetencia.inserirCompetencia()
+            }else if(opcaoComp == -1){
+                break
+            }
+            else{
+                println "Opção ou id invalido, digite um id valido"
+            }
+        }
     }
 
 }

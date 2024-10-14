@@ -61,5 +61,15 @@ class CompetenciaDAO {
             ex.printStackTrace()
         }
     }
+    void inserirCompetenciaVaga(int idVaga, int idCompetencia){
+        String inserir = 'INSERT INTO competencias_vagas (id_competencias, id_vagas) VALUES (?,?)'
+        try {
+            sql.executeInsert(inserir, [idCompetencia, idVaga])
+            println("Competencia inserida com sucesso")
+
+        }catch(SQLException ex){
+            ex.printStackTrace()
+        }
+    }
 
 }

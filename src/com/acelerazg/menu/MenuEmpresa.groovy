@@ -32,11 +32,18 @@ class MenuEmpresa {
                 case 1:
                     println "\nEmpresas cadastrados:"
                     println empresaDAO.listar()
-                    println "Digite 1 para Gerenciar Vaga de Uma empresa"
+                    println "Digite o id da empresa que deseja Gerenciar uma Vaga, ou adicionar uma vaga"
+                    println "Digite 0 para voltar ao menu principal"
+
                     def opcaoVaga = scanner.nextInt()
 
-                    if(opcaoVaga == 1){
-                        vaga.gerenciarVaga()
+                    if(empresaDAO.listar()*.id.contains(opcaoVaga)){
+                        vaga.gerenciarVaga(opcaoVaga)
+
+                    }else if(opcaoVaga == 0){
+                        return
+                    }else{
+                        println "Opçao invalida"
                     }
 
                     break
@@ -54,7 +61,7 @@ class MenuEmpresa {
                     break
                 case 5:
                     println "Saindo do programa..."
-                    break
+                    return
                 default:
                     println "Opção inválida! Por favor, escolha uma opção válida."
             }
