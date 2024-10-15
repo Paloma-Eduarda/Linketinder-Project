@@ -53,6 +53,8 @@ class MenuEmpresa {
                     break
                 case 3:
                     println "Atualizar uma Empresa"
+                    println empresaDAO.listar()
+                    atualizarEmpresa()
                     break
                 case 4:
                     println "Remover uma Empresa"
@@ -69,8 +71,6 @@ class MenuEmpresa {
 
     }
     void inserirEmpresa(){
-
-        Scanner scanner = new Scanner(System.in)
 
         println "Adicione o País da Empresa:"
         enderecoDAO.consultarPaises()
@@ -109,6 +109,41 @@ class MenuEmpresa {
 
         empresaDAO.excluir(id)
         println "Empresa excluida com sucesso"
+
+    }
+    void atualizarEmpresa(){
+
+        println "Insira o id da Empresa que sera editada:"
+
+        int id = scanner.nextInt()
+        scanner.nextLine()
+
+        println "Adicione o País da Empresa:"
+        enderecoDAO.consultarPaises()
+
+        int pais = scanner.nextInt()
+        scanner.nextLine()
+
+        println "Nome da Empresa:"
+        String nome = scanner.nextLine()
+
+        println "CNPJ:"
+        String cnpj = scanner.nextLine()
+
+        println "Email:"
+        String email = scanner.nextLine()
+
+        println "CEP:"
+        String cep = scanner.nextLine()
+
+        println "Descrição da Empresa:"
+        String descricao = scanner.nextLine()
+
+        println "Senha:"
+        String senha = scanner.nextLine()
+
+        empresa = new Empresa(cep, descricao, email, senha, nome, pais, cnpj, id)
+        empresaDAO.alterar(empresa)
 
     }
 

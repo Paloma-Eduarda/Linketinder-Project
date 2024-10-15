@@ -45,6 +45,8 @@ class MenuVaga {
                     break
                 case 3:
                     println "Atualizar uma Vaga"
+                    println vagaDAO.listar(id)
+                    atualizarVaga()
                     break
                 case 4:
                     println "Remover uma Vaga"
@@ -61,8 +63,6 @@ class MenuVaga {
 
     }
     void inserirVaga(int id){
-
-        Scanner scanner = new Scanner(System.in)
 
         println "Adicione o id do  Estado da Vaga:"
         enderecoDAO.consultarEstados()
@@ -117,6 +117,32 @@ class MenuVaga {
                 println "Opção ou id invalido, digite um id valido"
             }
         }
+    }
+    void atualizarVaga(){
+
+        println "Insira o id da Vaga que sera editada:"
+
+        int id = scanner.nextInt()
+        scanner.nextLine()
+
+        println "Adicione o id do  Estado da Vaga:"
+        enderecoDAO.consultarEstados()
+
+        int estado = scanner.nextInt()
+        scanner.nextLine()
+
+        println "Cidade da Vaga:"
+        String cidade = scanner.nextLine()
+
+        println "Nome da Vaga:"
+        String nome = scanner.nextLine()
+
+        println "Descrição da Vaga:"
+        String descricao = scanner.nextLine()
+
+
+        vaga = new Vaga(cidade, descricao, id, estado, nome)
+        vagaDAO.alterar(vaga)
     }
 
 }

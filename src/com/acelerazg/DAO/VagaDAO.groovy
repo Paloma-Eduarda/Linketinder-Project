@@ -1,4 +1,6 @@
 package com.acelerazg.DAO
+
+import com.acelerazg.classes.Empresa
 import com.acelerazg.classes.Vaga
 import groovy.sql.Sql
 
@@ -57,6 +59,23 @@ class VagaDAO {
             sql.execute(exluirComp, id)
             sql.execute(excluir, id)
 
+        }catch (SQLException ex){
+            ex.printStackTrace()
+        }
+    }
+    void alterar(Vaga vaga){
+        String alterar = 'UPDATE vagas SET nome=?, descricao=?, cidade=?, id_estado=? WHERE id=?'
+        int idEstado = vaga.id_estado as Integer
+        int idVaga = vaga.id as Integer
+
+        try{
+            sql.executeUpdate(alterar, [
+                    vaga.nome,
+                    vaga.descricao,
+                    vaga.cidade,
+                    idEstado,
+                    idVaga,
+            ])
         }catch (SQLException ex){
             ex.printStackTrace()
         }
