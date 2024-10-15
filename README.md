@@ -8,8 +8,11 @@ O **Linketinder** é uma aplicação Groovy que combina a funcionalidade de Matc
 - **CRUD**:
 
     **Candidatos**: Criar, listar, atualizar e remover candidatos.
+  
     **Competências**: Gerenciar as competências dos candidatos e vagas, criar, listar, atualizar e remover.
+  
     **Vagas**: Gerenciar as vagas oferecidas pelas empresas, criar, listar, atualizar e remover.
+  
     **Empresas**: Gerenciar informações das empresas, criar, listar, atualizar e remover.
 
 Persistência de Dados: Todos os dados são armazenados em um banco de dados PostgreSQL.
