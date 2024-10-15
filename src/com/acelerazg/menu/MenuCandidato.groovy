@@ -2,7 +2,7 @@ package com.acelerazg.menu
 
 import com.acelerazg.DAO.CandidatoDAO
 import com.acelerazg.DAO.CompetenciaDAO
-import com.acelerazg.DAO.PaisDAO
+import com.acelerazg.DAO.EnderecoDAO
 import com.acelerazg.classes.Candidato
 
 class MenuCandidato {
@@ -11,7 +11,7 @@ class MenuCandidato {
 
     CompetenciaDAO competenciaDAO = new CompetenciaDAO()
     MenuCompetencia menuCompetencia = new MenuCompetencia()
-    PaisDAO paisDAO = new PaisDAO()
+    EnderecoDAO enderecoDAO = new EnderecoDAO()
 
     Scanner scanner = new Scanner(System.in)
 
@@ -42,6 +42,8 @@ class MenuCandidato {
                     break
                 case 3:
                     println "Atualizar um Candidato"
+                    println candidatoDAO.listar()
+                    atualizarCandidato()
                     break
                 case 4:
                     println "Remover um Candidato"
@@ -59,10 +61,8 @@ class MenuCandidato {
     }
     void inserirCandidato(){
 
-        Scanner scanner = new Scanner(System.in)
-
         println "Adicione o id País do Candidato:"
-        paisDAO.consultarPaises()
+        enderecoDAO.consultarPaises()
 
         int pais = scanner.nextInt()
         scanner.nextLine()
@@ -80,7 +80,7 @@ class MenuCandidato {
 
         println "CPF:"
         String cpf = scanner.nextLine()
-2
+
         println "Email:"
         String email = scanner.nextLine()
 
@@ -95,9 +95,9 @@ class MenuCandidato {
 
         candidato = new Candidato(cep, descricao, email, senha, nome, pais, cpf, sqlDate, sobrenome)
         def idCandidato = candidatoDAO.inserir(candidato)
-
         inserirCompetencias(idCandidato)
     }
+
     void excluirCandidato(){
 
         println "Insira o id do candidato que sera excluido:"
@@ -129,6 +129,49 @@ class MenuCandidato {
                 println "Opção ou id invalido, digite um id valido"
             }
         }
+    }
+    void atualizarCandidato(){
+
+        println "Insira o id do candidato que sera editado:"
+
+        int id = scanner.nextInt()
+        scanner.nextLine()
+
+        println "Adicione o novo id País do Candidato:"
+        enderecoDAO.consultarPaises()
+
+        int pais = scanner.nextInt()
+        scanner.nextLine()
+
+        println "Nome do Candidato:"
+        String nome = scanner.nextLine()
+
+        println "Sobrenome:"
+        String sobrenome = scanner.nextLine()
+
+        println "Data de Nascimento (yyyy-MM-dd):"
+        String dataNascimento = scanner.nextLine()
+        Date data = Date.parse("yyyy-MM-dd", dataNascimento)
+        def sqlDate = new java.sql.Date(data.getTime())
+
+        println "CPF:"
+        String cpf = scanner.nextLine()
+
+        println "Email:"
+        String email = scanner.nextLine()
+
+        println "CEP:"
+        String cep = scanner.nextLine()
+
+        println "Descrição do Candidato:"
+        String descricao = scanner.nextLine()
+
+        println "Senha:"
+        String senha = scanner.nextLine()
+
+        candidato = new Candidato(cep, descricao, email, senha, nome, pais, cpf, sqlDate, sobrenome, id)
+        candidatoDAO.alterar(candidato)
+
     }
 
 }

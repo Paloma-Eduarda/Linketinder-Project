@@ -1,7 +1,6 @@
 package com.acelerazg.DAO
 
 import com.acelerazg.classes.Candidato
-import com.acelerazg.classes.Empresa
 import groovy.sql.Sql
 
 import java.sql.SQLException
@@ -73,4 +72,27 @@ class CandidatoDAO {
             ex.printStackTrace()
         }
     }
+    void alterar(Candidato candidato){
+        String alterar = 'UPDATE candidato SET nome=?, sobrenome=?, data_nascimento=?, email=?, cpf=?, cep=?, descricao=?, id_pais =?, senha=? WHERE id=?'
+        int idPais = candidato.id_pais as Integer
+        int idCandidato = candidato.id as Integer
+
+        try{
+            sql.executeUpdate(alterar, [
+                    candidato.nome,
+                    candidato.sobrenome,
+                    candidato.data_nascimento,
+                    candidato.email,
+                    candidato.cpf,
+                    candidato.cep,
+                    candidato.descricao,
+                    idPais,
+                    candidato.senha,
+                    idCandidato
+            ])
+        }catch (SQLException ex){
+            ex.printStackTrace()
+        }
+    }
+
 }

@@ -1,6 +1,7 @@
 package com.acelerazg.menu
 
 import com.acelerazg.DAO.CompetenciaDAO
+import com.acelerazg.DAO.EnderecoDAO
 import com.acelerazg.DAO.VagaDAO
 import com.acelerazg.classes.Vaga
 
@@ -12,6 +13,8 @@ class MenuVaga {
 
     CompetenciaDAO competenciaDAO = new CompetenciaDAO()
     MenuCompetencia menuCompetencia = new MenuCompetencia()
+
+    EnderecoDAO enderecoDAO = new EnderecoDAO()
 
     void gerenciarVaga(int id){
 
@@ -61,7 +64,9 @@ class MenuVaga {
 
         Scanner scanner = new Scanner(System.in)
 
-        println "Adicione a Estado da Vaga:"
+        println "Adicione o id do  Estado da Vaga:"
+        enderecoDAO.consultarEstados()
+
         int estado = scanner.nextInt()
         scanner.nextLine()
 

@@ -7,7 +7,7 @@ class Pessoa {
     String descricao
     String senha
     int id_pais
-    //List competencias = ["Python", "Java", "Spring Framework"]
+
     Pessoa(String cep, String descricao, String email, String senha, String nome, int id_pais) {
         this.cep = cep
         this.descricao = descricao

@@ -4,10 +4,10 @@ import groovy.sql.Sql
 
 import java.sql.SQLException
 
-class PaisDAO {
+class EnderecoDAO {
     def sql
 
-    PaisDAO() {
+    EnderecoDAO() {
         try {
             def url = 'jdbc:postgresql://localhost:5432/linketinder'
             def user = 'postgres'
@@ -31,6 +31,17 @@ class PaisDAO {
             }
         } catch (SQLException e) {
             println "Erro ao consultar países: ${e.message}"
+        }
+    }
+    void consultarEstados(){
+        try {
+            def query = 'SELECT * FROM estado'
+
+            sql.eachRow(query) { row ->
+                println "ID: ${row.id}, Código: ${row.codigo}, Nome: ${row.nome}"
+            }
+        } catch (SQLException e) {
+            println "Erro ao consultar estados: ${e.message}"
         }
     }
 }
