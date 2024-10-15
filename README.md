@@ -5,14 +5,20 @@
 O **Linketinder** é uma aplicação Groovy que combina a funcionalidade de Match do Tinder, com o campo individual de competências do Linkedin. 
 
 ## Funcionalidades
+- **CRUD**:
 
-- **Listar Empresas e Candidatos**: Mostra todas as Empresas e candidatos cadastradas
+    **Candidatos**: Criar, listar, atualizar e remover candidatos.
+    **Competências**: Gerenciar as competências dos candidatos e vagas, criar, listar, atualizar e remover.
+    **Vagas**: Gerenciar as vagas oferecidas pelas empresas, criar, listar, atualizar e remover.
+    **Empresas**: Gerenciar informações das empresas, criar, listar, atualizar e remover.
+
+Persistência de Dados: Todos os dados são armazenados em um banco de dados PostgreSQL.
 
 ## Tecnologias
 
 - Groovy.
 - IntelliJ IDEA ou qualquer IDE compatível com Groovy.
-- PostgreSQL
+- PostgreSQL (Persistência de Dados)
 - Workbench (Criação de modelo)
 
 ## Como Executar
