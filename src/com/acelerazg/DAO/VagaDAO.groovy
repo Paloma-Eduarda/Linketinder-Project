@@ -17,7 +17,6 @@ class VagaDAO {
             def driver = 'org.postgresql.Driver'
 
             this.sql = Sql.newInstance(url, user, password, driver)
-            println "Conexão bem-sucedida com o banco de dados!"
 
         } catch (SQLException exception) {
             exception.printStackTrace()

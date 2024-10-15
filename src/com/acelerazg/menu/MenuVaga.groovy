@@ -16,7 +16,7 @@ class MenuVaga {
 
     EnderecoDAO enderecoDAO = new EnderecoDAO()
 
-    void gerenciarVaga(int id){
+    void gerenciarVaga(int id_empresa){
 
         def scanner = new Scanner(System.in)
 
@@ -36,21 +36,21 @@ class MenuVaga {
                     println "\nVagas cadastrados:"
 
                     //melhorar
-                    println vagaDAO.listar(id)
+                    println vagaDAO.listar(id_empresa)
 
                     break
                 case 2:
                     println "\n Inserir Vaga:"
-                    inserirVaga(id)
+                    inserirVaga(id_empresa)
                     break
                 case 3:
                     println "Atualizar uma Vaga"
-                    println vagaDAO.listar(id)
-                    atualizarVaga()
+                    println vagaDAO.listar(id_empresa)
+                    atualizarVaga(id_empresa)
                     break
                 case 4:
                     println "Remover uma Vaga"
-                    println vagaDAO.listar(id)
+                    println vagaDAO.listar(id_empresa)
                     excluirVaga()
                     break
                 case 5:
@@ -118,7 +118,7 @@ class MenuVaga {
             }
         }
     }
-    void atualizarVaga(){
+    void atualizarVaga(int id_empresa){
 
         println "Insira o id da Vaga que sera editada:"
 
@@ -141,7 +141,7 @@ class MenuVaga {
         String descricao = scanner.nextLine()
 
 
-        vaga = new Vaga(cidade, descricao, id, estado, nome)
+        vaga = new Vaga(cidade, descricao, id_empresa, estado, id, nome)
         vagaDAO.alterar(vaga)
     }
 

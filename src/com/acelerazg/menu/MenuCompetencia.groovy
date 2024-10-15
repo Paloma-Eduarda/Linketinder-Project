@@ -27,8 +27,6 @@ class MenuCompetencia {
             switch(opcao) {
                 case 1:
                     println "\nCompetências cadastrados:"
-
-                    //melhorar
                     println competenciaDAO.listar()
 
                     break
@@ -38,6 +36,9 @@ class MenuCompetencia {
                     break
                 case 3:
                     println "Atualizar uma Competência"
+                    println competenciaDAO.listar()
+                    atualizarCompetencia()
+
                     break
                 case 4:
                     println "Remover uma Competência"
@@ -49,13 +50,12 @@ class MenuCompetencia {
                     break
                 default:
                     println "Opção inválida! Por favor, escolha uma opção válida."
+                    return
             }
         }
 
     }
     void inserirCompetencia(){
-
-        Scanner scanner = new Scanner(System.in)
 
         println "Nome da Competencia:"
         String nome = scanner.nextLine()
@@ -73,6 +73,17 @@ class MenuCompetencia {
         competenciaDAO.excluir(id)
         println "Competência excluida com sucesso!!"
 
+    }
+    void atualizarCompetencia(){
+        println "Adicione o id da competencia que sera editada"
+        int id = scanner.nextInt()
+        scanner.nextLine()
+
+        println "Nome da Competencia:"
+        String nome = scanner.nextLine()
+
+        competencia = new Competencia(nome, id)
+        competenciaDAO.alterar(competencia)
     }
 
 }

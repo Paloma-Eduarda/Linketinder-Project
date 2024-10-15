@@ -1,5 +1,6 @@
 package com.acelerazg.DAO
 
+import com.acelerazg.classes.Candidato
 import com.acelerazg.classes.Competencia
 import groovy.sql.Sql
 
@@ -16,7 +17,6 @@ class CompetenciaDAO {
             def driver = 'org.postgresql.Driver'
 
             this.sql = Sql.newInstance(url, user, password, driver)
-            println "Conexão bem-sucedida com o banco de dados!"
 
         } catch (SQLException exception) {
             exception.printStackTrace()
@@ -68,6 +68,19 @@ class CompetenciaDAO {
             println("Competencia inserida com sucesso")
 
         }catch(SQLException ex){
+            ex.printStackTrace()
+        }
+    }
+    void alterar(Competencia competencia){
+        String alterar = 'UPDATE competencias SET nome=? WHERE id=?'
+        int idCompetencia = competencia.id as Integer
+
+        try{
+            sql.executeUpdate(alterar, [
+                    competencia.nome,
+                    idCompetencia
+            ])
+        }catch (SQLException ex){
             ex.printStackTrace()
         }
     }
