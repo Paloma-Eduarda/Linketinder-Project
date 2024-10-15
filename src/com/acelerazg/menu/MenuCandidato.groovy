@@ -55,6 +55,7 @@ class MenuCandidato {
                     return
                 default:
                     println "Opção inválida! Por favor, escolha uma opção válida."
+                    break
             }
         }
 
