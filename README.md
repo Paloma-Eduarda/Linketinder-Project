@@ -27,7 +27,7 @@ Persistência de Dados: Todos os dados são armazenados em um banco de dados Pos
 ## Como Executar
 
 1. Clone o repositório ou baixe o código-fonte.
-2. Compile e execute a classe `Main`.
+2. Compile e execute a classe `Linketinder.com.acelerazg.Main`.
 3. Utilize o menu principal no console.
 
 ## Instruções de Uso
