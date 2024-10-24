@@ -6,6 +6,8 @@ import Linketinder.com.acelerazg.DAO.CompetenciaDAO
 import Linketinder.com.acelerazg.DAO.EnderecoDAO
 import Linketinder.com.acelerazg.classes.Candidato
 
+import java.time.LocalDate
+
 class MenuCandidato {
     Candidato candidato
     CandidatoDAO candidatoDAO = new CandidatoDAO()
@@ -77,8 +79,7 @@ class MenuCandidato {
 
         println "Data de Nascimento (yyyy-MM-dd):"
         String dataNascimento = scanner.nextLine()
-        Date data = Date.parse("yyyy-MM-dd", dataNascimento)
-        def sqlDate = new java.sql.Date(data.getTime())
+        LocalDate data = LocalDate.parse(dataNascimento)
 
         println "CPF:"
         String cpf = scanner.nextLine()
@@ -95,7 +96,7 @@ class MenuCandidato {
         println "Senha:"
         String senha = scanner.nextLine()
 
-        candidato = new Candidato(cep, descricao, email, senha, nome, pais, cpf, sqlDate, sobrenome)
+        candidato = new Candidato(cep, descricao, email, senha, nome, pais, cpf, data, sobrenome)
         def idCandidato = candidatoDAO.inserir(candidato)
         inserirCompetencias(idCandidato)
     }
@@ -153,8 +154,7 @@ class MenuCandidato {
 
         println "Data de Nascimento (yyyy-MM-dd):"
         String dataNascimento = scanner.nextLine()
-        Date data = Date.parse("yyyy-MM-dd", dataNascimento)
-        def sqlDate = new java.sql.Date(data.getTime())
+        LocalDate data = LocalDate.parse(dataNascimento)
 
         println "CPF:"
         String cpf = scanner.nextLine()
@@ -171,7 +171,7 @@ class MenuCandidato {
         println "Senha:"
         String senha = scanner.nextLine()
 
-        candidato = new Candidato(cep, descricao, email, senha, nome, pais, cpf, sqlDate, sobrenome, id)
+        candidato = new Candidato(cep, descricao, email, senha, nome, pais, cpf, data, sobrenome, id)
         candidatoDAO.alterar(candidato)
 
     }

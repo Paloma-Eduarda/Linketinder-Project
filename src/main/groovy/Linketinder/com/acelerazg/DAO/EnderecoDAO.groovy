@@ -5,21 +5,9 @@ import groovy.sql.Sql
 import java.sql.SQLException
 
 class EnderecoDAO {
-    def sql
-    //adicionar classes
-    EnderecoDAO() {
-        try {
-            def url = 'jdbc:postgresql://localhost:5432/linketinder'
-            def user = 'postgres'
-            def password = 'admin'
-            def driver = 'org.postgresql.Driver'
 
-            this.sql = Sql.newInstance(url, user, password, driver)
-
-        } catch (SQLException exception) {
-            exception.printStackTrace()
-        }
-    }
+    ConexaoDAO conexaoDAO = new ConexaoDAO()
+    Sql sql = conexaoDAO.conectaBD()
 
     void consultarPaises(){
         try {

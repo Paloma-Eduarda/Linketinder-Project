@@ -6,21 +6,9 @@ import groovy.sql.Sql
 import java.sql.SQLException
 
 class EmpresaDAO {
-    def sql
 
-    EmpresaDAO() {
-        try {
-            def url = 'jdbc:postgresql://localhost:5432/linketinder'
-            def user = 'postgres'
-            def password = 'admin'
-            def driver = 'org.postgresql.Driver'
-
-            this.sql = Sql.newInstance(url, user, password, driver)
-
-        } catch (SQLException exception) {
-            exception.printStackTrace()
-        }
-    }
+    ConexaoDAO conexaoDAO = new ConexaoDAO()
+    Sql sql = conexaoDAO.conectaBD()
 
     List<Empresa> listar(){
         List<Empresa> empresas = []
@@ -37,7 +25,6 @@ class EmpresaDAO {
         try {
             sql.executeInsert(inserir, [empresa.nome, empresa.cnpj, empresa.descricao, empresa.cep, empresa.senha,
             empresa.id_pais, empresa.email])
-            println("Empresa inserida com sucesso")
 
         }catch(SQLException ex){
             ex.printStackTrace()

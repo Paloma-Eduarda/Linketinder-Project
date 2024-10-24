@@ -6,21 +6,9 @@ import groovy.sql.Sql
 import java.sql.SQLException
 
 class VagaDAO {
-    def sql
 
-    VagaDAO() {
-        try {
-            def url = 'jdbc:postgresql://localhost:5432/linketinder'
-            def user = 'postgres'
-            def password = 'admin'
-            def driver = 'org.postgresql.Driver'
-
-            this.sql = Sql.newInstance(url, user, password, driver)
-
-        } catch (SQLException exception) {
-            exception.printStackTrace()
-        }
-    }
+    ConexaoDAO conexaoDAO = new ConexaoDAO()
+    Sql sql = conexaoDAO.conectaBD()
 
     List<Vaga> listar(int id){
         List<Vaga> vagas = []
@@ -31,6 +19,7 @@ class VagaDAO {
 
         return vagas
     }
+
     int inserir(Vaga vaga) {
         String inserir = 'INSERT INTO vagas (nome, descricao, cidade, id_estado, id_empresa) VALUES (?,?,?,?,?)'
         try {
@@ -42,7 +31,6 @@ class VagaDAO {
                     vaga.id_empresa])
 
             vaga.id = generatedKeys[0][0]
-            println("Vaga inserida com sucesso")
             return vaga.id
 
         }catch(SQLException ex){
@@ -64,6 +52,7 @@ class VagaDAO {
         }
     }
     void alterar(Vaga vaga){
+
         String alterar = 'UPDATE vagas SET nome=?, descricao=?, cidade=?, id_estado=? WHERE id=?'
         int idEstado = vaga.id_estado as Integer
         int idVaga = vaga.id as Integer

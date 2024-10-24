@@ -1,6 +1,5 @@
 package Linketinder.com.acelerazg.DAO
 
-import Linketinder.com.acelerazg.classes.Candidato
 import Linketinder.com.acelerazg.classes.Competencia
 import groovy.sql.Sql
 
@@ -8,21 +7,8 @@ import java.sql.SQLException
 
 class CompetenciaDAO {
 
-    def sql
-    CompetenciaDAO() {
-        try {
-            //retirar def
-            def url = 'jdbc:postgresql://localhost:5432/linketinder'
-            def user = 'postgres'
-            def password = 'admin'
-            def driver = 'org.postgresql.Driver'
-
-            this.sql = Sql.newInstance(url, user, password, driver)
-
-        } catch (SQLException exception) {
-            exception.printStackTrace()
-        }
-    }
+    ConexaoDAO conexaoDAO = new ConexaoDAO()
+    Sql sql = conexaoDAO.conectaBD()
 
     List<Competencia> listar(){
         List<Competencia> competencias = []
@@ -37,7 +23,6 @@ class CompetenciaDAO {
         String inserir = 'INSERT INTO competencias (nome) VALUES (?)'
         try {
             sql.executeInsert(inserir, [competencia.nome])
-            println("Competencia inserida com sucesso")
 
         }catch(SQLException ex){
             ex.printStackTrace()
@@ -56,7 +41,6 @@ class CompetenciaDAO {
         String inserir = 'INSERT INTO competencias_candidato (id_competencias, id_candidato) VALUES (?,?)'
         try {
             sql.executeInsert(inserir, [idCompetencia, idCandidato])
-            println("Competencia inserida com sucesso")
 
         }catch(SQLException ex){
             ex.printStackTrace()
@@ -66,7 +50,6 @@ class CompetenciaDAO {
         String inserir = 'INSERT INTO competencias_vagas (id_competencias, id_vagas) VALUES (?,?)'
         try {
             sql.executeInsert(inserir, [idCompetencia, idVaga])
-            println("Competencia inserida com sucesso")
 
         }catch(SQLException ex){
             ex.printStackTrace()
