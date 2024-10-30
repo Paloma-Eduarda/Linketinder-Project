@@ -55,5 +55,3 @@ function listaCandidatos(candidate) {
 document.addEventListener("DOMContentLoaded", () => {
     renderCandidatos();
 });
-// @ts-ignore
-console.log(exports.comp);

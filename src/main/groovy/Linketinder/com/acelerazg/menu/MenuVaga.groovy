@@ -18,8 +18,6 @@ class MenuVaga {
 
     void gerenciarVaga(int id_empresa){
 
-        def scanner = new Scanner(System.in)
-
         while (true) {
             println('''
               1 - Listar Vagas
@@ -29,7 +27,7 @@ class MenuVaga {
               5 - Sair 
         ''')
 
-            def opcao = scanner.nextInt()
+            int opcao = scanner.nextInt()
 
             switch(opcao) {
                 case 1:
@@ -81,7 +79,7 @@ class MenuVaga {
 
 
         vaga = new Vaga(cidade, descricao, id, estado, nome)
-        def id_vaga = vagaDAO.inserir(vaga)
+        int id_vaga = vagaDAO.inserir(vaga)
 
         inserirCompetencias(id_vaga)
     }
@@ -104,7 +102,7 @@ class MenuVaga {
             println "Não encontrou a competência que precisa?"
             println  "Digite 0 e Adicione uma nova, ou -1 para sair"
 
-            def opcaoComp = scanner.nextInt()
+            int opcaoComp = scanner.nextInt()
 
             if(competenciaDAO.listar()*.id.contains(opcaoComp)){
                 competenciaDAO.inserirCompetenciaVaga(id_vaga, opcaoComp)

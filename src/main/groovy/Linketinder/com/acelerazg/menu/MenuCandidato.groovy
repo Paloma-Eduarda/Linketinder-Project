@@ -20,8 +20,6 @@ class MenuCandidato {
 
    void gerenciarCandidato(){
 
-        def scanner = new Scanner(System.in)
-
         while (true) {
             println('''
               1 - Listar candidatos
@@ -31,7 +29,7 @@ class MenuCandidato {
               5 - Sair 
         ''')
 
-            def opcao = scanner.nextInt()
+            int opcao = scanner.nextInt()
 
             switch(opcao) {
                 case 1:

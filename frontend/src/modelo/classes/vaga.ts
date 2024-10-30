@@ -1,6 +1,6 @@
 export class Vaga {
     constructor(
-        private _empresa:string,
+                private _empresa:string,
                 private _titulo:string,
                 private _formato:string,
                 private _local:string,

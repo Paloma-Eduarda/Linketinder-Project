@@ -15,8 +15,6 @@ class MenuEmpresa {
 
     void gerenciarEmpresa(){
 
-        def scanner = new Scanner(System.in)
-
         while (true) {
             println('''
               1 - Listar Empresas
@@ -26,7 +24,7 @@ class MenuEmpresa {
               5 - Sair 
         ''')
 
-            def opcao = scanner.nextInt()
+            int opcao = scanner.nextInt()
 
             switch(opcao) {
                 case 1:
@@ -35,7 +33,7 @@ class MenuEmpresa {
                     println "Digite o id da empresa que deseja Gerenciar uma Vaga, ou adicionar uma vaga"
                     println "Digite 0 para voltar ao menu principal"
 
-                    def opcaoVaga = scanner.nextInt()
+                    int opcaoVaga = scanner.nextInt()
 
                     if(empresaDAO.listar()*.id.contains(opcaoVaga)){
                         vaga.gerenciarVaga(opcaoVaga)

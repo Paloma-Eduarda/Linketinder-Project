@@ -20,16 +20,15 @@ static void main(String[] args) {
     println "4. Sair"
     print "Escolha uma opção: "
 
-    String input = scanner.nextLine().trim()
+    int opcao = scanner.nextInt()
+    scanner.nextLine()
 
-    if (input.isEmpty()) {
+    if (!opcao) {
       println "Entrada vazia! Por favor, digite um número."
       continue
     }
 
     try {
-      def opcao = input.toInteger() // Converter a String para Integer
-
       switch(opcao) {
         case 1:
           println "\nEmpresas cadastradas:"
@@ -49,8 +48,8 @@ static void main(String[] args) {
         default:
           println "Opção inválida! Por favor, escolha uma opção válida."
       }
-    } catch (NumberFormatException e) {
-      println "Entrada inválida! Por favor, insira um número."
+    } catch (NumberFormatException exception) {
+      println "Entrada inválida! Por favor, insira um número. ${exception}"
     }
   }
 }

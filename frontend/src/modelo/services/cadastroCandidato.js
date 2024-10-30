@@ -5,7 +5,6 @@ const ValidarDados_1 = require("./ValidarDados");
 document.addEventListener("DOMContentLoaded", function () {
     const salvarBtn = document.getElementById('enviar');
     salvarBtn.addEventListener("click", function () {
-        console.log('evento submit chamdo');
         const nome = document.getElementById('nomeCandidato').value;
         const email = document.getElementById('emailCandidato').value;
         const idade = document.getElementById('idade').value;

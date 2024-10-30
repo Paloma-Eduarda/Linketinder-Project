@@ -7,13 +7,13 @@ document.addEventListener("DOMContentLoaded",  function() {
 
     btSalvarEmpresa.addEventListener("click", function() {
         console.log('evento submit chamdo')
-        const nome = (document.getElementById('nome') as HTMLInputElement).value;
-        const email = (document.getElementById('email') as HTMLInputElement).value;
-        const cnpj = (document.getElementById('cnpj') as HTMLInputElement).value;
-        const pais = (document.getElementById('pais') as HTMLInputElement).value;
-        const estado = (document.getElementById('estado') as HTMLInputElement).value;
-        const cep = (document.getElementById('cep') as HTMLInputElement).value;
-        const descricao = (document.getElementById('descricaoEmp') as HTMLInputElement).value;
+        const nome:string = (document.getElementById('nome') as HTMLInputElement).value;
+        const email:string = (document.getElementById('email') as HTMLInputElement).value;
+        const cnpj :string= (document.getElementById('cnpj') as HTMLInputElement).value;
+        const pais :string= (document.getElementById('pais') as HTMLInputElement).value;
+        const estado:string = (document.getElementById('estado') as HTMLInputElement).value;
+        const cep :string= (document.getElementById('cep') as HTMLInputElement).value;
+        const descricao:string = (document.getElementById('descricaoEmp') as HTMLInputElement).value;
 
 
         const novaEmpresa = new Empresa(

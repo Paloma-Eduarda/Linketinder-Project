@@ -34,11 +34,11 @@ function listaCandidatos(candidate: any){
             candidatoData._idiomas,
             candidatoData._competencias,
         );
-        const arrays = candidato.competencias.split(',')
+        const arrays: string[] = candidato.competencias.split(',')
 
          comp = arrays.flat()
 
-        const candidatoDiv = document.createElement('div');
+        const candidatoDiv:HTMLDivElement = document.createElement('div');
         candidatoDiv.classList.add('candidato');
         candidatoDiv.innerHTML = `
                <br>
@@ -71,8 +71,3 @@ function listaCandidatos(candidate: any){
 document.addEventListener("DOMContentLoaded", () => {
     renderCandidatos()
 })
-
-
-
-// @ts-ignore
-console.log(comp)

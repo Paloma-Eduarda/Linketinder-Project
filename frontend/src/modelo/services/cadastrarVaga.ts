@@ -6,12 +6,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     btnCadVaga.addEventListener("click", function() {
         console.log('evento click chamdo')
-        const titulo = (document.getElementById('titulo_vaga') as HTMLInputElement).value;
-        const formato = (document.getElementById('formato_vaga') as HTMLInputElement).value;
-        const local = (document.getElementById('local_vaga') as HTMLInputElement).value;
-        const descricaoVaga = (document.getElementById('descricao_vaga') as HTMLInputElement).value;
-        const competenciasVaga = (document.getElementById('competencia_vaga') as HTMLInputElement).value;
-        const qualificacoesVaga = (document.getElementById('qualificacoes_vaga') as HTMLInputElement).value;
+        const titulo: string = (document.getElementById('titulo_vaga') as HTMLInputElement).value;
+        const formato: string = (document.getElementById('formato_vaga') as HTMLInputElement).value;
+        const local: string = (document.getElementById('local_vaga') as HTMLInputElement).value;
+        const descricaoVaga: string = (document.getElementById('descricao_vaga') as HTMLInputElement).value;
+        const competenciasVaga: string = (document.getElementById('competencia_vaga') as HTMLInputElement).value;
+        const qualificacoesVaga:string = (document.getElementById('qualificacoes_vaga') as HTMLInputElement).value;
 
         const novaVaga = new Vaga(
             "anomina",
@@ -35,3 +35,4 @@ function salvarVaga(novaVaga: Vaga) {
     localStorage.setItem('vagas', JSON.stringify(vagas))
     console.log('Vaga salva no localStorage');
 }
+

@@ -11,7 +11,6 @@ class MenuCompetencia {
 
     void gerenciarCompetencia(){
 
-        def scanner = new Scanner(System.in)
 
         while (true) {
             println('''
@@ -22,7 +21,7 @@ class MenuCompetencia {
               5 - Sair 
         ''')
 
-            def opcao = scanner.nextInt()
+            int opcao = scanner.nextInt()
 
             switch(opcao) {
                 case 1:
