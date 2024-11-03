@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded",  function() {
         const idiomas :string= (document.getElementById('idiomas') as HTMLInputElement).value;
 
 
-        const novoUsuarioC = new Candidato(
+        const novoUsuarioCadastrado = new Candidato(
             nome,
             email,
             estado,
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded",  function() {
             competencias
             )
         if(validaEmail(email) && validaNome(nome) && validaCpf(cpf) && validaIdade(idade) && validaCep(cep)){
-            salvarCandidato(novoUsuarioC)
+            salvarCandidato(novoUsuarioCadastrado)
         }
 
     })

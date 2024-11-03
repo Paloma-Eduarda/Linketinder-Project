@@ -1,7 +1,6 @@
 import { Vaga } from "../classes/vaga";
 
-// Melhorar, separar funções
-function renderVagas() {
+function renderizarVagas() {
     console.log('Renderizando Vagas...');
 
     const vagas = JSON.parse(localStorage.getItem('vagas') || '[]');
@@ -9,15 +8,15 @@ function renderVagas() {
 
     if (listaDeVagas) {
         if (Array.isArray(vagas) && vagas.length > 0) {
-            listaDeVagas.appendChild(criar_card_vaga(vagas));
+            listaDeVagas.appendChild(criarCardVaga(vagas));
         } else {
             console.log('Nenhuma vaga disponível para renderizar.');
         }
     }
 }
 
-function criar_card_vaga(vagas: any[]): HTMLDivElement {
-    const vagasContainer = document.createElement('div');
+function criarCardVaga(vagas: any[]): HTMLDivElement {
+    const vagasContainer: HTMLDivElement = document.createElement('div');
 
     vagas.forEach((vagaData: any) => {
         const vaga = new Vaga(
@@ -30,7 +29,7 @@ function criar_card_vaga(vagas: any[]): HTMLDivElement {
             vagaData._qualificacoes
         );
 
-        const vagaDiv = document.createElement('div');
+        const vagaDiv: HTMLDivElement = document.createElement('div');
         vagaDiv.classList.add('vaga');
         vagaDiv.innerHTML = `
             <div class="card border-light mb-3" style="max-width: 50rem; text-align: center; padding: 20px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
@@ -54,5 +53,5 @@ function criar_card_vaga(vagas: any[]): HTMLDivElement {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    renderVagas();
+    renderizarVagas();
 });

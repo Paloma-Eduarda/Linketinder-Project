@@ -1,6 +1,6 @@
 export class Vaga {
     constructor(
-                private _empresa:string,
+                private _empresa:number,
                 private _titulo:string,
                 private _formato:string,
                 private _local:string,
@@ -9,11 +9,11 @@ export class Vaga {
                 private _qualificacoes: string) {
     }
 
-    get empresa(): string {
+    get empresa(): number {
         return this._empresa;
     }
 
-    set empresa(value: string) {
+    set empresa(value: number) {
         this._empresa = value;
     }
 

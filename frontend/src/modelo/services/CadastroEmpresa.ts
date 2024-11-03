@@ -3,9 +3,9 @@ import {validaNome, validaEmail, validaCep, validaCnpj} from "./ValidarDados";
 
 
 document.addEventListener("DOMContentLoaded",  function() {
-    const btSalvarEmpresa = document.getElementById('salvarEmpresa') as HTMLButtonElement;
+    const botaoSalvarEmpresa = document.getElementById('salvarEmpresa') as HTMLButtonElement;
 
-    btSalvarEmpresa.addEventListener("click", function() {
+    botaoSalvarEmpresa.addEventListener("click", function() {
         console.log('evento submit chamdo')
         const nome:string = (document.getElementById('nome') as HTMLInputElement).value;
         const email:string = (document.getElementById('email') as HTMLInputElement).value;
@@ -26,14 +26,15 @@ document.addEventListener("DOMContentLoaded",  function() {
             pais
         )
         if(validaEmail(email) && validaNome(nome) && validaCnpj(cnpj) && validaCep(cep)){
-            salvarEmpresa(novaEmpresa)
+            salvarEmpresaNoLocalStorage(novaEmpresa)
         }
         console.log('Salvando empresa')
     })
 
 })
 
-function salvarEmpresa(novaEmpresa: Empresa) {
+function salvarEmpresaNoLocalStorage(novaEmpresa: Empresa) {
+
     const empresas = JSON.parse(localStorage.getItem('empresas') || '[]');
     empresas.push(novaEmpresa)
     localStorage.setItem('empresas', JSON.stringify(empresas))

@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 function salvarEmpresa(novaEmpresa) {
+    //criar classe para json???
     const empresas = JSON.parse(localStorage.getItem('empresas') || '[]');
     empresas.push(novaEmpresa);
     localStorage.setItem('empresas', JSON.stringify(empresas));

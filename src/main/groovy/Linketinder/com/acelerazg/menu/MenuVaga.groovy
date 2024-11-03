@@ -63,7 +63,7 @@ class MenuVaga {
     void inserirVaga(int id){
 
         println "Adicione o id do  Estado da Vaga:"
-        enderecoDAO.consultarEstados()
+        println enderecoDAO.consultarEstados()
 
         int estado = scanner.nextInt()
         scanner.nextLine()
@@ -124,7 +124,7 @@ class MenuVaga {
         scanner.nextLine()
 
         println "Adicione o id do  Estado da Vaga:"
-        enderecoDAO.consultarEstados()
+        println enderecoDAO.consultarEstados()
 
         int estado = scanner.nextInt()
         scanner.nextLine()

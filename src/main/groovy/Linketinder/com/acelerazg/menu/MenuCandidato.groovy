@@ -64,7 +64,7 @@ class MenuCandidato {
     void inserirCandidato(){
 
         println "Adicione o id País do Candidato:"
-        enderecoDAO.consultarPaises()
+        println enderecoDAO.consultarPaises()
 
         int pais = scanner.nextInt()
         scanner.nextLine()
@@ -139,7 +139,7 @@ class MenuCandidato {
         scanner.nextLine()
 
         println "Adicione o novo id País do Candidato:"
-        enderecoDAO.consultarPaises()
+        println enderecoDAO.consultarPaises()
 
         int pais = scanner.nextInt()
         scanner.nextLine()

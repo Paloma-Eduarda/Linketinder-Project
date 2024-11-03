@@ -20,7 +20,6 @@ class CandidatoServiceTest {
     @Before
     void setUpB() throws Exception {
 
-
         c1 = new Candidato(
                 "590-000",
                 "Estudande de Análise e Desenvolvimento de Sistemas",
@@ -36,16 +35,7 @@ class CandidatoServiceTest {
     @Test
    void testCadastrar() {
         candidatoService.cadastrar(c1)
-        //contains()
-        assert candidatoService.candidatos[0].nome == "Paloma Eduarda"
-        assert candidatoService.candidatos[0].email == "paloma@gmail.com"
-        assert candidatoService.candidatos[0].cpf == "000.000.000-00"
-        assert candidatoService.candidatos[0].id_pais == 1
-        assert candidatoService.candidatos[0].senha == "1241515616"
-        assert candidatoService.candidatos[0].cep == "590-000"
-        //assert candidatoService.candidatos[0].data_nascimento == Date.parse("yyyy-MM-dd", "2001-12-10")
-        assert candidatoService.candidatos[0].descricao == "Estudande de Análise e Desenvolvimento de Sistemas"
-
+        assert candidatoService.candidatos.contains(c1)
 
     }
 

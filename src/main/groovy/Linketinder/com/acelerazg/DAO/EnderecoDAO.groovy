@@ -1,34 +1,29 @@
 package Linketinder.com.acelerazg.DAO
-
+import Linketinder.com.acelerazg.classes.Estado
+import Linketinder.com.acelerazg.classes.Pais
 import groovy.sql.Sql
-
-import java.sql.SQLException
 
 class EnderecoDAO {
 
     ConexaoDAO conexaoDAO = new ConexaoDAO()
     Sql sql = conexaoDAO.conectaBD()
 
-    void consultarPaises(){
-        try {
-            def query = 'SELECT * FROM pais'
+    List<Pais> consultarPaises(){
+        List<Pais> paises = []
 
-            sql.eachRow(query) { row ->
-                println "ID: ${row.id}, Código: ${row.codigo}, Nome: ${row.nome}"
-            }
-        } catch (SQLException e) {
-            println "Erro ao consultar países: ${e.message}"
+        sql.eachRow('SELECT * FROM pais') { row ->
+            paises << new Pais(row.id, row.codigo, row.nome)
+
         }
+        return paises
     }
-    void consultarEstados(){
-        try {
-            def query = 'SELECT * FROM estado'
+    List<Estado> consultarEstados(){
+        List<Estado> estados = []
 
-            sql.eachRow(query) { row ->
-                println "ID: ${row.id}, Código: ${row.codigo}, Nome: ${row.nome}"
-            }
-        } catch (SQLException e) {
-            println "Erro ao consultar estados: ${e.message}"
+        sql.eachRow('SELECT * FROM estado') { row ->
+            estados << new Pais(row.id, row.codigo, row.nome)
+
         }
+        return estados
     }
 }

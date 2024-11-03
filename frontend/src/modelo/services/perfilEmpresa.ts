@@ -1,16 +1,13 @@
 import { Candidato } from '../classes/candidato.js';
 
 const candidatoList = (document.getElementById('candidato-list') as HTMLElement)
-export let comp: string[]
 
-function renderCandidatos() {
-    console.log('Renderizando candidatos...');
+function renderizarCandidatos() {
     const candidatos = JSON.parse(localStorage.getItem('candidatos') || '[]');
 
     if (candidatoList) {
-
         if (Array.isArray(candidatos) && candidatos.length > 0) {
-            listaCandidatos(candidatos)
+            criarCardCandidatos(candidatos)
         } else {
             console.log('Nenhum candidato disponível para renderizar.');
         }
@@ -19,7 +16,7 @@ function renderCandidatos() {
     }
 }
 
-function listaCandidatos(candidate: any){
+function criarCardCandidatos(candidate: any){
     candidate.forEach((candidatoData: any) => {
 
         const candidato = new Candidato(
@@ -34,40 +31,37 @@ function listaCandidatos(candidate: any){
             candidatoData._idiomas,
             candidatoData._competencias,
         );
-        const arrays: string[] = candidato.competencias.split(',')
-
-         comp = arrays.flat()
 
         const candidatoDiv:HTMLDivElement = document.createElement('div');
         candidatoDiv.classList.add('candidato');
         candidatoDiv.innerHTML = `
-               <br>
-                <div class="card card border-light mb-3" 
-                    style="max-width: 50rem; text-align: center;
-                    padding: 20px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
-                    <div>
-                        <h4 class="card-header" style="background-color: #863b67; color: white">
-                            Candidato Anônimo
-                        </h4>
-                        <p><strong>Formação: </strong>${candidato.formacao}</p>
-                        <p><strong>Idiomas: </strong>${candidato.idiomas}</p>
-                        <p><strong>Descrição: </strong>${candidato.descricao}</p>
-                        <p><strong>Competências: </strong>${candidato.competencias}</p>
-                        <span>
-                            <a href="#" class="card-link">
-                                <i class="bi bi-x-circle" style="color: darkred;"></i>
-                            </a>
-                            <a href="#" class="card-link">
-                                <i class="bi bi-check-circle" style="color: green"></i>
-                            </a>
-                        </span>
-                    </div>
+           <br>
+            <div class="card card border-light mb-3" 
+                style="max-width: 50rem; text-align: center;
+                padding: 20px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+                <div>
+                    <h4 class="card-header" style="background-color: #863b67; color: white">
+                        Candidato Anônimo
+                    </h4>
+                    <p><strong>Formação: </strong>${candidato.formacao}</p>
+                    <p><strong>Idiomas: </strong>${candidato.idiomas}</p>
+                    <p><strong>Descrição: </strong>${candidato.descricao}</p>
+                    <p><strong>Competências: </strong>${candidato.competencias}</p>
+                    <span>
+                        <a href="#" class="card-link">
+                            <i class="bi bi-x-circle" style="color: darkred;"></i>
+                        </a>
+                        <a href="#" class="card-link">
+                            <i class="bi bi-check-circle" style="color: green"></i>
+                        </a>
+                    </span>
                 </div>
-                <br>`;
+            </div>
+            <br>`;
 
         candidatoList.appendChild(candidatoDiv);
     });
 }
 document.addEventListener("DOMContentLoaded", () => {
-    renderCandidatos()
+    renderizarCandidatos()
 })

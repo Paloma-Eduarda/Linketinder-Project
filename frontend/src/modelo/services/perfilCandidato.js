@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const vaga_1 = require("../classes/vaga");
-// Melhorar, separar funções
 function renderVagas() {
     console.log('Renderizando Vagas...');
     const vagas = JSON.parse(localStorage.getItem('vagas') || '[]');
