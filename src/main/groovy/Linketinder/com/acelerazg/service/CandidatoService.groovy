@@ -6,7 +6,11 @@ import Linketinder.com.acelerazg.classes.Candidato
 
 class CandidatoService implements ICandidatoService{
 
-    CandidatoDAO candidatoDAO = new CandidatoDAO()
+    private CandidatoDAO candidatoDAO
+
+    CandidatoService(CandidatoDAO candidatoDAO) {
+        this.candidatoDAO = candidatoDAO
+    }
 
     @Override
     List listarCandidato() {

@@ -4,22 +4,18 @@ import Linketinder.com.acelerazg.Interfaces.IVagaService
 import Linketinder.com.acelerazg.classes.Vaga
 
 class VagaService implements IVagaService{
-    private IVagaService iVagaService
-
-    VagaService(IVagaService iVagaService) {
-        this.iVagaService = iVagaService
-    }
+    VagaDAO vagaDAO = new VagaDAO()
 
     List listarVagas(int id) {
-       return iVagaService.listarVagas(id)
+       return vagaDAO.listar()
     }
     void cadastrarVaga(Vaga vaga) {
-        iVagaService.cadastrarVaga(vaga)
+       vagaDAO.inserir(vagaDAO)
     }
     void editarVaga(Vaga vaga){
-        iVagaService.editarVaga(vaga)
+        vagaDAO.alterar(vaga)
     }
     void excluirVaga(int id){
-       iVagaService.excluirVaga(id)
+       vagaDAO.excluir(id)
     }
 }
