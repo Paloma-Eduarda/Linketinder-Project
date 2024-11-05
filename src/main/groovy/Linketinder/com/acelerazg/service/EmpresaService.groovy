@@ -1,21 +1,24 @@
 package Linketinder.com.acelerazg.service
 
+import Linketinder.com.acelerazg.DAO.EmpresaDAO
+import Linketinder.com.acelerazg.Interfaces.IEmpresaService
 import Linketinder.com.acelerazg.classes.Empresa
 
+class EmpresaService implements IEmpresaService{
 
-class EmpresaService implements PessoaService{
+    EmpresaDAO empresaDAO = new EmpresaDAO()
 
-    List<Empresa> empresas = [];
-    @Override
-    List listar() {
-        return empresas
+    List listarEmpresas() {
+        return empresaDAO.listar()
     }
-
-
-    void cadastrar(Empresa e) {
-        empresas.add(e)
-
+    void cadastrarEmpresa(Empresa empresa) {
+        empresaDAO.inserir(empresa)
     }
-
+    void editarEmpresa(Empresa empresa){
+        empresaDAO.alterar(empresa)
+    }
+    void excluirEmpresa(int id){
+        empresaDAO.excluir(id)
+    }
 
 }

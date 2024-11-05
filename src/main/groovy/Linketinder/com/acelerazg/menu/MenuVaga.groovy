@@ -3,13 +3,19 @@ package Linketinder.com.acelerazg.menu
 import Linketinder.com.acelerazg.DAO.CompetenciaDAO
 import Linketinder.com.acelerazg.DAO.EnderecoDAO
 import Linketinder.com.acelerazg.DAO.VagaDAO
+import Linketinder.com.acelerazg.Interfaces.IVagaService
 import Linketinder.com.acelerazg.classes.Vaga
+import Linketinder.com.acelerazg.service.VagaService
 
 class MenuVaga {
     Scanner scanner = new Scanner(System.in)
 
     Vaga vaga
     VagaDAO vagaDAO = new VagaDAO()
+
+    IVagaService iVagaService = new VagaService()
+
+    VagaService vagaService = new VagaService(iVagaService)
 
     CompetenciaDAO competenciaDAO = new CompetenciaDAO()
     MenuCompetencia menuCompetencia = new MenuCompetencia()
@@ -34,7 +40,7 @@ class MenuVaga {
                     println "\nVagas cadastrados:"
 
                     //melhorar
-                    println vagaDAO.listar(id_empresa)
+                    println vagaService.listarVagas(id_empresa)
 
                     break
                 case 2:

@@ -1,8 +1,9 @@
 package Linketinder.com.acelerazg.menu
 
-import Linketinder.com.acelerazg.DAO.EmpresaDAO
+
 import Linketinder.com.acelerazg.DAO.EnderecoDAO
 import Linketinder.com.acelerazg.classes.Empresa
+import Linketinder.com.acelerazg.service.EmpresaService
 
 class MenuEmpresa {
     Scanner scanner = new Scanner(System.in)
@@ -10,7 +11,7 @@ class MenuEmpresa {
     MenuVaga vaga = new MenuVaga()
 
     Empresa empresa
-    EmpresaDAO empresaDAO = new EmpresaDAO()
+    EmpresaService empresaService = new EmpresaService()
     EnderecoDAO enderecoDAO = new EnderecoDAO()
 
     void gerenciarEmpresa(){
@@ -29,13 +30,13 @@ class MenuEmpresa {
             switch(opcao) {
                 case 1:
                     println "\nEmpresas cadastrados:"
-                    println empresaDAO.listar()
+                    println empresaService.listarEmpresas()
                     println "Digite o id da empresa que deseja Gerenciar uma Vaga, ou adicionar uma vaga"
                     println "Digite 0 para voltar ao menu principal"
 
                     int opcaoVaga = scanner.nextInt()
 
-                    if(empresaDAO.listar()*.id.contains(opcaoVaga)){
+                    if(empresaService.listarEmpresas()*.id.contains(opcaoVaga)){
                         vaga.gerenciarVaga(opcaoVaga)
 
                     }else if(opcaoVaga == 0){
@@ -51,12 +52,12 @@ class MenuEmpresa {
                     break
                 case 3:
                     println "Atualizar uma Empresa"
-                    println empresaDAO.listar()
+                    println empresaService.listarEmpresas()
                     atualizarEmpresa()
                     break
                 case 4:
                     println "Remover uma Empresa"
-                    println empresaDAO.listar()
+                    println empresaService.listarEmpresas()
                     excluirEmpresa()
                     break
                 case 5:
@@ -96,7 +97,7 @@ class MenuEmpresa {
         String senha = scanner.nextLine()
 
         empresa = new Empresa(cep, descricao, email, senha, nome, pais, cnpj)
-        empresaDAO.inserir(empresa)
+        empresaService.cadastrarEmpresa(empresa)
 
     }
     void excluirEmpresa(){
@@ -106,7 +107,7 @@ class MenuEmpresa {
         int id = scanner.nextInt()
         scanner.nextLine()
 
-        empresaDAO.excluir(id)
+        empresaService.excluirEmpresa(id)
         println "Empresa excluida com sucesso"
 
     }
@@ -142,7 +143,7 @@ class MenuEmpresa {
         String senha = scanner.nextLine()
 
         empresa = new Empresa(cep, descricao, email, senha, nome, pais, cnpj, id)
-        empresaDAO.alterar(empresa)
+        empresaService.editarEmpresa(empresa)
 
     }
 

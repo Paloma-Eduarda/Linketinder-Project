@@ -1,18 +1,15 @@
 package Linketinder.com.acelerazg.menu
-
-
-import Linketinder.com.acelerazg.DAO.CandidatoDAO
-import Linketinder.com.acelerazg.DAO.CompetenciaDAO
 import Linketinder.com.acelerazg.DAO.EnderecoDAO
 import Linketinder.com.acelerazg.classes.Candidato
+import Linketinder.com.acelerazg.service.CandidatoService
+import Linketinder.com.acelerazg.service.CompetenciaService
 
 import java.time.LocalDate
 
 class MenuCandidato {
     Candidato candidato
-    CandidatoDAO candidatoDAO = new CandidatoDAO()
-
-    CompetenciaDAO competenciaDAO = new CompetenciaDAO()
+    CandidatoService candidatoService = new CandidatoService()
+    CompetenciaService competenciaService = new CompetenciaService()
     MenuCompetencia menuCompetencia = new MenuCompetencia()
     EnderecoDAO enderecoDAO = new EnderecoDAO()
 
@@ -34,7 +31,7 @@ class MenuCandidato {
             switch(opcao) {
                 case 1:
                     println "\nCandidatos cadastrados:"
-                    println candidatoDAO.listar()
+                    println candidatoService.listarCandidato()
 
                     break
                 case 2:
@@ -43,12 +40,12 @@ class MenuCandidato {
                     break
                 case 3:
                     println "Atualizar um Candidato"
-                    println candidatoDAO.listar()
+                    println candidatoService.listarCandidato()
                     atualizarCandidato()
                     break
                 case 4:
                     println "Remover um Candidato"
-                    println candidatoDAO.listar()
+                    println candidatoService.listarCandidato()
                     excluirCandidato()
                     break
                 case 5:
@@ -95,7 +92,7 @@ class MenuCandidato {
         String senha = scanner.nextLine()
 
         candidato = new Candidato(cep, descricao, email, senha, nome, pais, cpf, data, sobrenome)
-        def idCandidato = candidatoDAO.inserir(candidato)
+        int idCandidato = candidatoService.cadastrarCandidato(candidato)
         inserirCompetencias(idCandidato)
     }
 
@@ -106,21 +103,21 @@ class MenuCandidato {
         int id = scanner.nextInt()
         scanner.nextLine()
 
-        candidatoDAO.excluir(id)
+        candidatoService.excluirCandidato(id)
         println "Canidato excluido com sucesso"
 
     }
     void inserirCompetencias(int id_candidato){
         while (true){
-            println competenciaDAO.listar()
+            println competenciaService.listarCompetencias()
             println "Digite o id da competencias que deseja adicionar"
             println "Não encontrou a competência que precisa?"
             println  "Digite 0 e Adicione uma nova, ou -1 para sair"
 
-            def opcaoComp = scanner.nextInt()
+            int opcaoComp = scanner.nextInt()
 
-            if(competenciaDAO.listar()*.id.contains(opcaoComp)){
-                competenciaDAO.inserirCompetenciaCandidato(id_candidato, opcaoComp)
+            if(competenciaService.listarCompetencias()*.id.contains(opcaoComp)){
+                competenciaService.inserirCompetenciaCandidato(id_candidato, opcaoComp)
             }else if(opcaoComp == 0){
                 menuCompetencia.inserirCompetencia()
             }else if(opcaoComp == -1){
@@ -170,7 +167,7 @@ class MenuCandidato {
         String senha = scanner.nextLine()
 
         candidato = new Candidato(cep, descricao, email, senha, nome, pais, cpf, data, sobrenome, id)
-        candidatoDAO.alterar(candidato)
+        candidatoService.editarCandidato(candidato)
 
     }
 

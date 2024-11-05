@@ -1,13 +1,12 @@
 package Linketinder.com.acelerazg.menu
-
-import Linketinder.com.acelerazg.DAO.CompetenciaDAO
 import Linketinder.com.acelerazg.classes.Competencia
+import Linketinder.com.acelerazg.service.CompetenciaService
 
 class MenuCompetencia {
     Scanner scanner = new Scanner(System.in)
 
     Competencia competencia
-    CompetenciaDAO competenciaDAO = new CompetenciaDAO()
+    CompetenciaService competenciaService = new CompetenciaService()
 
     void gerenciarCompetencia(){
 
@@ -26,7 +25,7 @@ class MenuCompetencia {
             switch(opcao) {
                 case 1:
                     println "\nCompetências cadastrados:"
-                    println competenciaDAO.listar()
+                    println competenciaService.listarCompetencias()
 
                     break
                 case 2:
@@ -35,13 +34,13 @@ class MenuCompetencia {
                     break
                 case 3:
                     println "Atualizar uma Competência"
-                    println competenciaDAO.listar()
+                    println competenciaService.listarCompetencias()
                     atualizarCompetencia()
 
                     break
                 case 4:
                     println "Remover uma Competência"
-                    println competenciaDAO.listar()
+                    println competenciaService.listarCompetencias()
                     excluirCompetencia()
                     break
                 case 5:
@@ -60,7 +59,7 @@ class MenuCompetencia {
         String nome = scanner.nextLine()
 
         competencia = new Competencia(nome)
-        competenciaDAO.inserir(competencia)
+        competenciaService.cadastrarCompetencia(competencia)
     }
     void excluirCompetencia(){
 
@@ -69,7 +68,7 @@ class MenuCompetencia {
         int id = scanner.nextInt()
         scanner.nextLine()
 
-        competenciaDAO.excluir(id)
+        competenciaService.excluirCompetencia(id)
         println "Competência excluida com sucesso!!"
 
     }
@@ -82,7 +81,7 @@ class MenuCompetencia {
         String nome = scanner.nextLine()
 
         competencia = new Competencia(nome, id)
-        competenciaDAO.alterar(competencia)
+        competenciaService.editarCompetencia(competencia)
     }
 
 }
