@@ -3,24 +3,26 @@ package Linketinder.com.acelerazg.menu
 import Linketinder.com.acelerazg.DAO.CompetenciaDAO
 import Linketinder.com.acelerazg.DAO.EnderecoDAO
 import Linketinder.com.acelerazg.DAO.VagaDAO
+import Linketinder.com.acelerazg.Interfaces.ICompetenciaService
 import Linketinder.com.acelerazg.Interfaces.IVagaService
 import Linketinder.com.acelerazg.classes.Vaga
+import Linketinder.com.acelerazg.service.CompetenciaService
 import Linketinder.com.acelerazg.service.VagaService
 
 class MenuVaga {
     Scanner scanner = new Scanner(System.in)
-
     Vaga vaga
-    VagaDAO vagaDAO = new VagaDAO()
-
-    IVagaService iVagaService = new VagaService()
-
-    VagaService vagaService = new VagaService(iVagaService)
-
-    CompetenciaDAO competenciaDAO = new CompetenciaDAO()
     MenuCompetencia menuCompetencia = new MenuCompetencia()
-
     EnderecoDAO enderecoDAO = new EnderecoDAO()
+    IVagaService vagaService
+    CompetenciaService competenciaService
+
+    MenuVaga() {
+        CompetenciaDAO competenciaDAO = new CompetenciaDAO()
+        VagaDAO vagaDAO = new VagaDAO()
+        this.competenciaService = new CompetenciaService(competenciaDAO)
+        this.vagaService = new VagaService(vagaDAO)
+    }
 
     void gerenciarVaga(int id_empresa){
 
@@ -49,12 +51,12 @@ class MenuVaga {
                     break
                 case 3:
                     println "Atualizar uma Vaga"
-                    println vagaDAO.listar(id_empresa)
+                    println vagaService.listarVagas(id_empresa)
                     atualizarVaga(id_empresa)
                     break
                 case 4:
                     println "Remover uma Vaga"
-                    println vagaDAO.listar(id_empresa)
+                    println vagaService.listarVagas(id_empresa)
                     excluirVaga()
                     break
                 case 5:
@@ -85,7 +87,7 @@ class MenuVaga {
 
 
         vaga = new Vaga(cidade, descricao, id, estado, nome)
-        int id_vaga = vagaDAO.inserir(vaga)
+        int id_vaga = vagaService.cadastrarVaga(vaga)
 
         inserirCompetencias(id_vaga)
     }
@@ -96,22 +98,22 @@ class MenuVaga {
         int id = scanner.nextInt()
         scanner.nextLine()
 
-        vagaDAO.excluir(id)
+        vagaService.excluirVaga(id)
         println "Vaga excluida com sucesso"
 
     }
     void inserirCompetencias(int id_vaga){
 
         while (true){
-            println competenciaDAO.listar()
+            println competenciaService.listarCompetencias()
             println "Digite o id da competencias que deseja adicionar"
             println "Não encontrou a competência que precisa?"
             println  "Digite 0 e Adicione uma nova, ou -1 para sair"
 
             int opcaoComp = scanner.nextInt()
 
-            if(competenciaDAO.listar()*.id.contains(opcaoComp)){
-                competenciaDAO.inserirCompetenciaVaga(id_vaga, opcaoComp)
+            if(competenciaService.listarCompetencias()*.id.contains(opcaoComp)){
+                competenciaService.inserirCompetenciaCandidato(id_vaga, opcaoComp)
             }else if(opcaoComp == 0){
                 menuCompetencia.inserirCompetencia()
             }else if(opcaoComp == -1){
@@ -146,7 +148,7 @@ class MenuVaga {
 
 
         vaga = new Vaga(cidade, descricao, id_empresa, estado, id, nome)
-        vagaDAO.alterar(vaga)
+        vagaService.editarVaga(vaga)
     }
 
 }

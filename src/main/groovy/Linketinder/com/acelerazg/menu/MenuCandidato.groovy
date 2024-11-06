@@ -1,4 +1,7 @@
 package Linketinder.com.acelerazg.menu
+
+import Linketinder.com.acelerazg.DAO.CandidatoDAO
+import Linketinder.com.acelerazg.DAO.CompetenciaDAO
 import Linketinder.com.acelerazg.DAO.EnderecoDAO
 import Linketinder.com.acelerazg.classes.Candidato
 import Linketinder.com.acelerazg.service.CandidatoService
@@ -8,14 +11,24 @@ import java.time.LocalDate
 
 class MenuCandidato {
     Candidato candidato
-    CandidatoService candidatoService = new CandidatoService()
-    CompetenciaService competenciaService = new CompetenciaService()
-    MenuCompetencia menuCompetencia = new MenuCompetencia()
+
+    private CandidatoService candidatoService
+    private CompetenciaService competenciaService
+    private MenuCompetencia menuCompetencia
+
     EnderecoDAO enderecoDAO = new EnderecoDAO()
 
     Scanner scanner = new Scanner(System.in)
 
-   void gerenciarCandidato(){
+    MenuCandidato() {
+        CandidatoDAO candidatoDAO = new CandidatoDAO()
+        CompetenciaDAO competenciaDAO = new CompetenciaDAO()
+        this.candidatoService = new CandidatoService(candidatoDAO)
+        this.competenciaService = new CompetenciaService(competenciaDAO)
+        this.menuCompetencia = new MenuCompetencia()
+    }
+
+    void gerenciarCandidato(){
 
         while (true) {
             println('''

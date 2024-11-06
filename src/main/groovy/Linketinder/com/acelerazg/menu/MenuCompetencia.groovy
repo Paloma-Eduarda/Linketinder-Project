@@ -1,4 +1,6 @@
 package Linketinder.com.acelerazg.menu
+
+import Linketinder.com.acelerazg.DAO.CompetenciaDAO
 import Linketinder.com.acelerazg.classes.Competencia
 import Linketinder.com.acelerazg.service.CompetenciaService
 
@@ -6,7 +8,12 @@ class MenuCompetencia {
     Scanner scanner = new Scanner(System.in)
 
     Competencia competencia
-    CompetenciaService competenciaService = new CompetenciaService()
+    private CompetenciaService competenciaService
+
+    MenuCompetencia() {
+        CompetenciaDAO competenciaDAO = new CompetenciaDAO()
+        this.competenciaService = new CompetenciaService(competenciaDAO)
+    }
 
     void gerenciarCompetencia(){
 

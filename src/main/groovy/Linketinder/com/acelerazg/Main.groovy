@@ -1,5 +1,4 @@
 package Linketinder.com.acelerazg
-
 import Linketinder.com.acelerazg.menu.MenuCandidato
 import Linketinder.com.acelerazg.menu.MenuCompetencia
 import Linketinder.com.acelerazg.menu.MenuEmpresa
@@ -8,9 +7,11 @@ import Linketinder.com.acelerazg.menu.MenuEmpresa
 static void main(String[] args) {
 
   Scanner scanner = new Scanner(System.in)
-  MenuCandidato menuCandidato = new MenuCandidato()
+
   MenuEmpresa menuEmpresa = new MenuEmpresa()
   MenuCompetencia menuCompetencia = new MenuCompetencia()
+  MenuCandidato menuCandidato = new MenuCandidato()
+
 
   while (true) {
     println "\nMenu:"

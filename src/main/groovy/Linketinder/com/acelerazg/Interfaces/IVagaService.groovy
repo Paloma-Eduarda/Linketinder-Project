@@ -6,7 +6,7 @@ interface IVagaService {
 
     List listarVagas(int id)
 
-    void cadastrarVaga(Vaga vaga)
+    int cadastrarVaga(Vaga vaga)
 
     void editarVaga(Vaga vaga)
 

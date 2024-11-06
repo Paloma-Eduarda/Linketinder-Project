@@ -6,7 +6,12 @@ import Linketinder.com.acelerazg.classes.Competencia
 
 class CompetenciaService implements  ICompetenciaService {
 
-    CompetenciaDAO competenciaDAO = new CompetenciaDAO()
+    private CompetenciaDAO competenciaDAO
+
+    CompetenciaService(CompetenciaDAO competenciaDAO) {
+        this.competenciaDAO = competenciaDAO
+    }
+
     @Override
     List listarCompetencias() {
         return competenciaDAO.listar()

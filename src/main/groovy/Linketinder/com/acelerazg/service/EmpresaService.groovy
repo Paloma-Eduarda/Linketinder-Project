@@ -6,7 +6,11 @@ import Linketinder.com.acelerazg.classes.Empresa
 
 class EmpresaService implements IEmpresaService{
 
-    EmpresaDAO empresaDAO = new EmpresaDAO()
+    private EmpresaDAO empresaDAO
+
+    EmpresaService(EmpresaDAO empresaDAO) {
+        this.empresaDAO = empresaDAO
+    }
 
     List listarEmpresas() {
         return empresaDAO.listar()

@@ -1,18 +1,24 @@
 package Linketinder.com.acelerazg.menu
 
-
+import Linketinder.com.acelerazg.DAO.EmpresaDAO
 import Linketinder.com.acelerazg.DAO.EnderecoDAO
+import Linketinder.com.acelerazg.Interfaces.IEmpresaService
 import Linketinder.com.acelerazg.classes.Empresa
 import Linketinder.com.acelerazg.service.EmpresaService
 
 class MenuEmpresa {
     Scanner scanner = new Scanner(System.in)
-
+    Empresa empresa
     MenuVaga vaga = new MenuVaga()
 
-    Empresa empresa
-    EmpresaService empresaService = new EmpresaService()
+    private EmpresaService empresaService
+
+    MenuEmpresa() {
+        EmpresaDAO empresaDAO = new EmpresaDAO()
+        this.empresaService = new EmpresaService(empresaDAO)
+    }
     EnderecoDAO enderecoDAO = new EnderecoDAO()
+
 
     void gerenciarEmpresa(){
 
