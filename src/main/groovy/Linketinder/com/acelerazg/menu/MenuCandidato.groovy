@@ -2,6 +2,8 @@ package Linketinder.com.acelerazg.menu
 
 import Linketinder.com.acelerazg.DAO.CandidatoDAO
 import Linketinder.com.acelerazg.DAO.CompetenciaDAO
+import Linketinder.com.acelerazg.DAO.ConexaoDAO
+import Linketinder.com.acelerazg.DAO.ConexaoFactory
 import Linketinder.com.acelerazg.DAO.EnderecoDAO
 import Linketinder.com.acelerazg.classes.Candidato
 import Linketinder.com.acelerazg.service.CandidatoService
@@ -16,13 +18,13 @@ class MenuCandidato {
     private CompetenciaService competenciaService
     private MenuCompetencia menuCompetencia
 
-    EnderecoDAO enderecoDAO = new EnderecoDAO()
+    EnderecoDAO enderecoDAO = new EnderecoDAO("postgresql")
 
     Scanner scanner = new Scanner(System.in)
 
     MenuCandidato() {
-        CandidatoDAO candidatoDAO = new CandidatoDAO()
-        CompetenciaDAO competenciaDAO = new CompetenciaDAO()
+        CandidatoDAO candidatoDAO = new CandidatoDAO("postgresql");
+        CompetenciaDAO competenciaDAO = new CompetenciaDAO("postgresql")
         this.candidatoService = new CandidatoService(candidatoDAO)
         this.competenciaService = new CompetenciaService(competenciaDAO)
         this.menuCompetencia = new MenuCompetencia()

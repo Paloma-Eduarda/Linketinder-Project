@@ -1,14 +1,21 @@
 package Linketinder.com.acelerazg.DAO
 
+import Linketinder.com.acelerazg.Interfaces.IConexaoBDFactory
 import Linketinder.com.acelerazg.classes.Candidato
 import groovy.sql.Sql
 
 import java.sql.SQLException
 
-class CandidatoDAO {
+class CandidatoDAO{
 
-    ConexaoDAO conexaoDAO = new ConexaoDAO()
-    Sql sql = conexaoDAO.conectaBD()
+    private IConexaoBDFactory iConexaoBDFactory
+    private  Sql sql
+
+   CandidatoDAO(String dbType) {
+        this.iConexaoBDFactory = ConexaoFactory.conect(dbType)
+        this.sql = iConexaoBDFactory.conectar()
+    }
+
 
     List<Candidato> listar(){
         List<Candidato> candidatos = []

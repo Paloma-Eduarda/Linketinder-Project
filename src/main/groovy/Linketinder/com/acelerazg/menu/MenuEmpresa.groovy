@@ -14,10 +14,10 @@ class MenuEmpresa {
     private EmpresaService empresaService
 
     MenuEmpresa() {
-        EmpresaDAO empresaDAO = new EmpresaDAO()
+        EmpresaDAO empresaDAO = new EmpresaDAO("postgresql")
         this.empresaService = new EmpresaService(empresaDAO)
     }
-    EnderecoDAO enderecoDAO = new EnderecoDAO()
+    EnderecoDAO enderecoDAO = new EnderecoDAO("postgresql")
 
 
     void gerenciarEmpresa(){

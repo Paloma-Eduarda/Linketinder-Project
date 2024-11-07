@@ -1,12 +1,21 @@
 package Linketinder.com.acelerazg.DAO
+
+import Linketinder.com.acelerazg.Interfaces.IConexaoBDFactory
 import Linketinder.com.acelerazg.classes.Estado
 import Linketinder.com.acelerazg.classes.Pais
 import groovy.sql.Sql
 
 class EnderecoDAO {
 
-    ConexaoDAO conexaoDAO = new ConexaoDAO()
-    Sql sql = conexaoDAO.conectaBD()
+
+    private IConexaoBDFactory iConexaoBDFactory
+    private  Sql sql
+
+   EnderecoDAO(String dbType) {
+        this.iConexaoBDFactory = ConexaoFactory.conect(dbType)
+        this.sql = iConexaoBDFactory.conectar()
+    }
+
 
     List<Pais> consultarPaises(){
         List<Pais> paises = []

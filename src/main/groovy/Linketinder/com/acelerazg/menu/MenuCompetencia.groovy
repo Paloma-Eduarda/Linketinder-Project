@@ -11,7 +11,7 @@ class MenuCompetencia {
     private CompetenciaService competenciaService
 
     MenuCompetencia() {
-        CompetenciaDAO competenciaDAO = new CompetenciaDAO()
+        CompetenciaDAO competenciaDAO = new CompetenciaDAO("postgresql")
         this.competenciaService = new CompetenciaService(competenciaDAO)
     }
 

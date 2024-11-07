@@ -1,5 +1,6 @@
 package Linketinder.com.acelerazg.DAO
 
+import Linketinder.com.acelerazg.Interfaces.IConexaoBDFactory
 import Linketinder.com.acelerazg.classes.Vaga
 import groovy.sql.Sql
 
@@ -7,8 +8,13 @@ import java.sql.SQLException
 
 class VagaDAO {
 
-    ConexaoDAO conexaoDAO = new ConexaoDAO()
-    Sql sql = conexaoDAO.conectaBD()
+    private IConexaoBDFactory iConexaoBDFactory
+    private  Sql sql
+
+    VagaDAO(String dbType) {
+        this.iConexaoBDFactory = ConexaoFactory.conect(dbType)
+        this.sql = iConexaoBDFactory.conectar()
+    }
 
     List<Vaga> listar(int id){
         List<Vaga> vagas = []

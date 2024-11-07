@@ -41,7 +41,7 @@ static void main(String[] args) {
           break
         case 3:
           println "\nCompetências cadastradas:"
-          menuCompetencia.gerenciarCompetencia()
+         menuCompetencia.gerenciarCompetencia()
           break
         case 4:
           println "Saindo do programa..."

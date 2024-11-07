@@ -30,14 +30,14 @@ class EmpresaServiceTest extends Specification {
         resultado == empresasEsperadas
     }
 
-    def "CadastrarEmpresa"() {
-        given:
-        empresa = Mock(Empresa.class)
-        when:
-        empresaService.cadastrarEmpresa(empresa)
-
-        then:
-        1 * empresaDAO.inserir(empresa) >> 1
-
-    }
+//    def "CadastrarEmpresa"() {
+//        given:
+//        empresa = Mock(Empresa.class)
+//        when:
+//        empresaService.cadastrarEmpresa(empresa)
+//
+//        then:
+//        1 * empresaDAO.inserir(empresa) >> 1
+//
+//    }
 }

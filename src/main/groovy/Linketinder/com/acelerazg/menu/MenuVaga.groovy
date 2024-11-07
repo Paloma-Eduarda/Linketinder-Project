@@ -13,13 +13,13 @@ class MenuVaga {
     Scanner scanner = new Scanner(System.in)
     Vaga vaga
     MenuCompetencia menuCompetencia = new MenuCompetencia()
-    EnderecoDAO enderecoDAO = new EnderecoDAO()
+    EnderecoDAO enderecoDAO = new EnderecoDAO("postgresql")
     IVagaService vagaService
     CompetenciaService competenciaService
 
     MenuVaga() {
-        CompetenciaDAO competenciaDAO = new CompetenciaDAO()
-        VagaDAO vagaDAO = new VagaDAO()
+        CompetenciaDAO competenciaDAO = new CompetenciaDAO("postgresql")
+        VagaDAO vagaDAO = new VagaDAO("postgresql")
         this.competenciaService = new CompetenciaService(competenciaDAO)
         this.vagaService = new VagaService(vagaDAO)
     }
