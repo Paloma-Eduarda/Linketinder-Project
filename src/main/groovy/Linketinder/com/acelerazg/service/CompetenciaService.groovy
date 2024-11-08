@@ -18,7 +18,7 @@ class CompetenciaService implements  ICompetenciaService {
     }
 
     @Override
-    int cadastrarCompetencia(Competencia competencia) {
+    void cadastrarCompetencia(Competencia competencia) {
         competenciaDAO.inserir(competencia)
     }
 

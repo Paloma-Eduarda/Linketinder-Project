@@ -28,6 +28,7 @@ class MenuCompetencia {
         ''')
 
             int opcao = scanner.nextInt()
+            scanner.nextLine()
 
             switch(opcao) {
                 case 1:
@@ -61,7 +62,6 @@ class MenuCompetencia {
 
     }
     void inserirCompetencia(){
-
         println "Nome da Competencia:"
         String nome = scanner.nextLine()
 

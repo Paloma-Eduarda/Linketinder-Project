@@ -7,7 +7,7 @@ interface ICompetenciaService {
 
     List listarCompetencias()
 
-    int cadastrarCompetencia(Competencia competencia)
+    void cadastrarCompetencia(Competencia competencia)
 
     void editarCompetencia(Competencia competencia)
 

@@ -20,7 +20,8 @@ class EmpresaServiceTest extends Specification {
     }
     def "ListarEmpresas"() {
         given:
-        List<Empresa> empresasEsperadas = [ empresa = Mock(Empresa.class)]
+        empresa = Mock(Empresa.class)
+        List<Empresa> empresasEsperadas = [ empresa]
         empresaDAO.listar() >> empresasEsperadas
 
         when:
@@ -30,14 +31,24 @@ class EmpresaServiceTest extends Specification {
         resultado == empresasEsperadas
     }
 
-//    def "CadastrarEmpresa"() {
-//        given:
-//        empresa = Mock(Empresa.class)
-//        when:
-//        empresaService.cadastrarEmpresa(empresa)
-//
-//        then:
-//        1 * empresaDAO.inserir(empresa) >> 1
-//
-//    }
+    def "CadastrarEmpresa"() {
+        given:
+        empresa = Mock(Empresa.class)
+        when:
+        empresaService.cadastrarEmpresa(empresa)
+
+        then:
+        1 * empresaDAO.inserir(empresa) >> 1
+
+    }
+    def "Excluir empresa com ID válido"() {
+        given:
+        int id = 1
+
+        when:
+        empresaService.excluirEmpresa(id)
+
+        then:
+        1 * empresaDAO.excluir(id)
+    }
 }

@@ -50,4 +50,14 @@ class CandidatoServiceTest extends Specification {
         then:
         1 * candidatoDAO.inserir(candidato) >> 1
     }
+    def "Excluir candidato com ID válido"() {
+        given:
+        int id = 1
+
+        when:
+        candidatoService.excluirCandidato(id)
+
+        then:
+        1 * candidatoDAO.excluir(id)
+    }
 }

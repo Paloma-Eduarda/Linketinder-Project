@@ -26,16 +26,26 @@ class EmpresaDAO {
 
         return empresas
     }
-    void inserir(Empresa empresa) {
+    int inserir(Empresa empresa) {
         String inserir = 'INSERT INTO empresa (nome, cnpj, descricao, cep, senha, id_pais, email) VALUES (?,?,?,?,?,?,?)'
         try {
-            sql.executeInsert(inserir, [empresa.nome, empresa.cnpj, empresa.descricao, empresa.cep, empresa.senha,
-            empresa.id_pais, empresa.email])
+            List generatedKeys = sql.executeInsert(inserir, [
+                    empresa.nome,
+                    empresa.cnpj,
+                    empresa.descricao,
+                    empresa.cep,
+                    empresa.senha,
+                    empresa.id_pais,
+                    empresa.email])
+
+            empresa.id = generatedKeys[0][0]
+            return  empresa.id
 
         }catch(SQLException ex){
             ex.printStackTrace()
         }
     }
+
     void excluir(int id) {
         String excluir = 'DELETE FROM empresa WHERE id = ?'
         try {
