@@ -1,8 +1,8 @@
 package com.acelerazg.service
 
 import Linketinder.com.acelerazg.DAO.CandidatoDAO
-import Linketinder.com.acelerazg.classes.Candidato
-import Linketinder.com.acelerazg.service.CandidatoService
+import Linketinder.com.acelerazg.Model.Candidato
+import Linketinder.com.acelerazg.Service.CandidatoService
 import spock.lang.Specification
 
 import java.time.LocalDate

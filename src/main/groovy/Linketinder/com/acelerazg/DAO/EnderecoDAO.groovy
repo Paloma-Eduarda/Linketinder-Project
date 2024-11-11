@@ -1,8 +1,8 @@
 package Linketinder.com.acelerazg.DAO
 
 import Linketinder.com.acelerazg.Interfaces.IConexaoBDFactory
-import Linketinder.com.acelerazg.classes.Estado
-import Linketinder.com.acelerazg.classes.Pais
+import Linketinder.com.acelerazg.Model.Estado
+import Linketinder.com.acelerazg.Model.Pais
 import groovy.sql.Sql
 
 class EnderecoDAO {

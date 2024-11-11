@@ -1,4 +1,4 @@
-package Linketinder.com.acelerazg.classes
+package Linketinder.com.acelerazg.Model
 
 class Competencia {
     int id

@@ -1,6 +1,6 @@
 package Linketinder.com.acelerazg.Interfaces
 
-import Linketinder.com.acelerazg.classes.Vaga
+import Linketinder.com.acelerazg.Model.Vaga
 
 interface IVagaService {
 

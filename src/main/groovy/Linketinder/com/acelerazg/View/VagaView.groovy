@@ -1,27 +1,24 @@
-package Linketinder.com.acelerazg.menu
+package Linketinder.com.acelerazg.View
 
+import Linketinder.com.acelerazg.Controller.CompetenciaControl
+import Linketinder.com.acelerazg.Controller.VagaControl
 import Linketinder.com.acelerazg.DAO.CompetenciaDAO
 import Linketinder.com.acelerazg.DAO.EnderecoDAO
-import Linketinder.com.acelerazg.DAO.VagaDAO
-import Linketinder.com.acelerazg.Interfaces.ICompetenciaService
-import Linketinder.com.acelerazg.Interfaces.IVagaService
-import Linketinder.com.acelerazg.classes.Vaga
-import Linketinder.com.acelerazg.service.CompetenciaService
-import Linketinder.com.acelerazg.service.VagaService
+import Linketinder.com.acelerazg.Service.CompetenciaService
 
-class MenuVaga {
+
+class VagaView {
     Scanner scanner = new Scanner(System.in)
-    Vaga vaga
-    MenuCompetencia menuCompetencia = new MenuCompetencia()
     EnderecoDAO enderecoDAO = new EnderecoDAO("postgresql")
-    IVagaService vagaService
-    CompetenciaService competenciaService
 
-    MenuVaga() {
-        CompetenciaDAO competenciaDAO = new CompetenciaDAO("postgresql")
-        VagaDAO vagaDAO = new VagaDAO("postgresql")
-        this.competenciaService = new CompetenciaService(competenciaDAO)
-        this.vagaService = new VagaService(vagaDAO)
+    private CompetenciaView menuCompetencia
+    private CompetenciaControl competenciaControl
+    private VagaControl vagaControl
+
+    VagaView() {
+        this.menuCompetencia = new CompetenciaView()
+        this.vagaControl = new VagaControl()
+        this.competenciaControl = new CompetenciaControl()
     }
 
     void gerenciarVaga(int id_empresa){
@@ -41,8 +38,7 @@ class MenuVaga {
                 case 1:
                     println "\nVagas cadastrados:"
 
-                    //melhorar
-                    println vagaService.listarVagas(id_empresa)
+                    println vagaControl.listarVagas(id_empresa)
 
                     break
                 case 2:
@@ -51,12 +47,12 @@ class MenuVaga {
                     break
                 case 3:
                     println "Atualizar uma Vaga"
-                    println vagaService.listarVagas(id_empresa)
+                    println vagaControl.listarVagas(id_empresa)
                     atualizarVaga(id_empresa)
                     break
                 case 4:
                     println "Remover uma Vaga"
-                    println vagaService.listarVagas(id_empresa)
+                    println vagaControl.listarVagas(id_empresa)
                     excluirVaga()
                     break
                 case 5:
@@ -85,11 +81,9 @@ class MenuVaga {
         println "Descrição da Vaga:"
         String descricao = scanner.nextLine()
 
+        int id_vaga = vagaControl.salvarVaga(cidade, descricao, id, estado, nome)
+        inserirCompetenciasVaga(id_vaga)
 
-        vaga = new Vaga(cidade, descricao, id, estado, nome)
-        int id_vaga = vagaService.cadastrarVaga(vaga)
-
-        inserirCompetencias(id_vaga)
     }
     void excluirVaga(){
 
@@ -98,22 +92,22 @@ class MenuVaga {
         int id = scanner.nextInt()
         scanner.nextLine()
 
-        vagaService.excluirVaga(id)
+        vagaControl.excluirVaga(id)
         println "Vaga excluida com sucesso"
 
     }
-    void inserirCompetencias(int id_vaga){
+    void inserirCompetenciasVaga(int id_vaga){
 
         while (true){
-            println competenciaService.listarCompetencias()
+            println competenciaControl.listarCompetencias()
             println "Digite o id da competencias que deseja adicionar"
             println "Não encontrou a competência que precisa?"
             println  "Digite 0 e Adicione uma nova, ou -1 para sair"
 
             int opcaoComp = scanner.nextInt()
 
-            if(competenciaService.listarCompetencias()*.id.contains(opcaoComp)){
-                competenciaService.inserirCompetenciaCandidato(id_vaga, opcaoComp)
+            if(competenciaControl.listarCompetencias()*.id.contains(opcaoComp)){
+                competenciaControl.inserirCompetenciaVaga(id_vaga, opcaoComp)
             }else if(opcaoComp == 0){
                 menuCompetencia.inserirCompetencia()
             }else if(opcaoComp == -1){
@@ -146,9 +140,7 @@ class MenuVaga {
         println "Descrição da Vaga:"
         String descricao = scanner.nextLine()
 
-
-        vaga = new Vaga(cidade, descricao, id_empresa, estado, id, nome)
-        vagaService.editarVaga(vaga)
+        vagaControl.editarVaga(cidade, descricao, id_empresa, estado, id, nome)
     }
 
 }

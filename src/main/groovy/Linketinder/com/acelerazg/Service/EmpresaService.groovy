@@ -1,8 +1,8 @@
-package Linketinder.com.acelerazg.service
+package Linketinder.com.acelerazg.Service
 
 import Linketinder.com.acelerazg.DAO.EmpresaDAO
 import Linketinder.com.acelerazg.Interfaces.IEmpresaService
-import Linketinder.com.acelerazg.classes.Empresa
+import Linketinder.com.acelerazg.Model.Empresa
 
 class EmpresaService implements IEmpresaService{
 

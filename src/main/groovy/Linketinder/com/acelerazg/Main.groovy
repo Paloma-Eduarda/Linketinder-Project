@@ -1,16 +1,16 @@
 package Linketinder.com.acelerazg
-import Linketinder.com.acelerazg.menu.MenuCandidato
-import Linketinder.com.acelerazg.menu.MenuCompetencia
-import Linketinder.com.acelerazg.menu.MenuEmpresa
+import Linketinder.com.acelerazg.View.CandidatoView
+import Linketinder.com.acelerazg.View.CompetenciaView
+import Linketinder.com.acelerazg.View.EmpresaView
 
 
 static void main(String[] args) {
 
   Scanner scanner = new Scanner(System.in)
 
-  MenuEmpresa menuEmpresa = new MenuEmpresa()
-  MenuCompetencia menuCompetencia = new MenuCompetencia()
-  MenuCandidato menuCandidato = new MenuCandidato()
+  EmpresaView menuEmpresa = new EmpresaView()
+  CompetenciaView menuCompetencia = new CompetenciaView()
+  CandidatoView menuCandidato = new CandidatoView()
 
 
   while (true) {

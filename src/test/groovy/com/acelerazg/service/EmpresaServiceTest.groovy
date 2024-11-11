@@ -2,8 +2,8 @@ package com.acelerazg.service
 
 
 import Linketinder.com.acelerazg.DAO.EmpresaDAO
-import Linketinder.com.acelerazg.classes.Empresa
-import Linketinder.com.acelerazg.service.EmpresaService
+import Linketinder.com.acelerazg.Model.Empresa
+import Linketinder.com.acelerazg.Service.EmpresaService
 import spock.lang.Specification
 
 class EmpresaServiceTest extends Specification {

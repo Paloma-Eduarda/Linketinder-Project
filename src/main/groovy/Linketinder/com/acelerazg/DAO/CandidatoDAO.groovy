@@ -1,7 +1,7 @@
 package Linketinder.com.acelerazg.DAO
 
 import Linketinder.com.acelerazg.Interfaces.IConexaoBDFactory
-import Linketinder.com.acelerazg.classes.Candidato
+import Linketinder.com.acelerazg.Model.Candidato
 import groovy.sql.Sql
 
 import java.sql.SQLException

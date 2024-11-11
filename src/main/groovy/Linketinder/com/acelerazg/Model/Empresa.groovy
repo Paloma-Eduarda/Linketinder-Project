@@ -1,4 +1,4 @@
-package Linketinder.com.acelerazg.classes
+package Linketinder.com.acelerazg.Model
 
 class Empresa extends Pessoa {
     int id

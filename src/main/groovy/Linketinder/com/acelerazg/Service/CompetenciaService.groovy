@@ -1,8 +1,8 @@
-package Linketinder.com.acelerazg.service
+package Linketinder.com.acelerazg.Service
 
 import Linketinder.com.acelerazg.DAO.CompetenciaDAO
 import Linketinder.com.acelerazg.Interfaces.ICompetenciaService
-import Linketinder.com.acelerazg.classes.Competencia
+import Linketinder.com.acelerazg.Model.Competencia
 
 class CompetenciaService implements  ICompetenciaService {
 

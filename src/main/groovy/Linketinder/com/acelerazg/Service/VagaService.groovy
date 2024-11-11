@@ -1,7 +1,7 @@
-package Linketinder.com.acelerazg.service
+package Linketinder.com.acelerazg.Service
 import Linketinder.com.acelerazg.DAO.VagaDAO
 import Linketinder.com.acelerazg.Interfaces.IVagaService
-import Linketinder.com.acelerazg.classes.Vaga
+import Linketinder.com.acelerazg.Model.Vaga
 
 class VagaService implements IVagaService{
     private VagaDAO vagaDAO

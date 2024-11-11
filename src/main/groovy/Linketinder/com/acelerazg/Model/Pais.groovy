@@ -1,11 +1,11 @@
-package Linketinder.com.acelerazg.classes
+package Linketinder.com.acelerazg.Model
 
-class Estado {
+class Pais {
     int id
     String codigo
     String nome
 
-    Estado(String codigo, int id, String nome) {
+    Pais(int id, String codigo, String nome) {
         this.codigo = codigo
         this.id = id
         this.nome = nome
@@ -13,7 +13,7 @@ class Estado {
 
     @Override
     public String toString() {
-        return "Estado: " +
+        return "\nPais = " +
                 "codigo='" + codigo + '\'' +
                 ", id=" + id +
                 ", nome='" + nome + '\'';

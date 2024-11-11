@@ -1,33 +1,26 @@
-package Linketinder.com.acelerazg.menu
+package Linketinder.com.acelerazg.View
 
-import Linketinder.com.acelerazg.DAO.CandidatoDAO
-import Linketinder.com.acelerazg.DAO.CompetenciaDAO
-import Linketinder.com.acelerazg.DAO.ConexaoDAO
-import Linketinder.com.acelerazg.DAO.ConexaoFactory
+import Linketinder.com.acelerazg.Controller.CandidatoControl
+import Linketinder.com.acelerazg.Controller.CompetenciaControl
 import Linketinder.com.acelerazg.DAO.EnderecoDAO
-import Linketinder.com.acelerazg.classes.Candidato
-import Linketinder.com.acelerazg.service.CandidatoService
-import Linketinder.com.acelerazg.service.CompetenciaService
+
 
 import java.time.LocalDate
 
-class MenuCandidato {
-    Candidato candidato
+class CandidatoView {
 
-    private CandidatoService candidatoService
-    private CompetenciaService competenciaService
-    private MenuCompetencia menuCompetencia
+    private CandidatoControl candidatoControl
+    private CompetenciaControl competenciaControl
+    private CompetenciaView menuCompetencia
 
     EnderecoDAO enderecoDAO = new EnderecoDAO("postgresql")
 
     Scanner scanner = new Scanner(System.in)
 
-    MenuCandidato() {
-        CandidatoDAO candidatoDAO = new CandidatoDAO("postgresql");
-        CompetenciaDAO competenciaDAO = new CompetenciaDAO("postgresql")
-        this.candidatoService = new CandidatoService(candidatoDAO)
-        this.competenciaService = new CompetenciaService(competenciaDAO)
-        this.menuCompetencia = new MenuCompetencia()
+    CandidatoView() {
+        this.competenciaControl = new CompetenciaControl()
+        this.candidatoControl = new CandidatoControl()
+        this.menuCompetencia = new CompetenciaView()
     }
 
     void gerenciarCandidato(){
@@ -46,8 +39,7 @@ class MenuCandidato {
             switch(opcao) {
                 case 1:
                     println "\nCandidatos cadastrados:"
-                    println candidatoService.listarCandidato()
-
+                    println candidatoControl.listarCandidato()
                     break
                 case 2:
                     println "\n Inserir Candidato:"
@@ -55,12 +47,12 @@ class MenuCandidato {
                     break
                 case 3:
                     println "Atualizar um Candidato"
-                    println candidatoService.listarCandidato()
+                    println candidatoControl.listarCandidato()
                     atualizarCandidato()
                     break
                 case 4:
                     println "Remover um Candidato"
-                    println candidatoService.listarCandidato()
+                    println candidatoControl.listarCandidato()
                     excluirCandidato()
                     break
                 case 5:
@@ -106,9 +98,8 @@ class MenuCandidato {
         println "Senha:"
         String senha = scanner.nextLine()
 
-        candidato = new Candidato(cep, descricao, email, senha, nome, pais, cpf, data, sobrenome)
-        int idCandidato = candidatoService.cadastrarCandidato(candidato)
-        inserirCompetencias(idCandidato)
+        int idCandidato = candidatoControl.salvarCandidato(cep, descricao, email, senha, nome, pais, cpf, data, sobrenome)
+        inserirCompetenciasCandidato(idCandidato)
     }
 
     void excluirCandidato(){
@@ -118,21 +109,21 @@ class MenuCandidato {
         int id = scanner.nextInt()
         scanner.nextLine()
 
-        candidatoService.excluirCandidato(id)
+        candidatoControl.excluirCandidato(id)
         println "Canidato excluido com sucesso"
 
     }
-    void inserirCompetencias(int id_candidato){
+    void inserirCompetenciasCandidato(int id_candidato){
         while (true){
-            println competenciaService.listarCompetencias()
+            println competenciaControl.listarCompetencias()
             println "Digite o id da competencias que deseja adicionar"
             println "Não encontrou a competência que precisa?"
             println  "Digite 0 e Adicione uma nova, ou -1 para sair"
 
             int opcaoComp = scanner.nextInt()
 
-            if(competenciaService.listarCompetencias()*.id.contains(opcaoComp)){
-                competenciaService.inserirCompetenciaCandidato(id_candidato, opcaoComp)
+            if(competenciaControl.listarCompetencias()*.id.contains(opcaoComp)){
+                competenciaControl.inserirCompetenciaCandidato(id_candidato, opcaoComp)
             }else if(opcaoComp == 0){
                 menuCompetencia.inserirCompetencia()
             }else if(opcaoComp == -1){
@@ -181,8 +172,7 @@ class MenuCandidato {
         println "Senha:"
         String senha = scanner.nextLine()
 
-        candidato = new Candidato(cep, descricao, email, senha, nome, pais, cpf, data, sobrenome, id)
-        candidatoService.editarCandidato(candidato)
+        candidatoControl.editarCandidato(cep, descricao, email, senha, nome, pais, cpf, data, sobrenome, id)
 
     }
 

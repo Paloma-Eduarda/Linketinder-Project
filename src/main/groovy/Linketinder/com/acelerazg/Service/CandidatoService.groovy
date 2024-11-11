@@ -1,8 +1,8 @@
-package Linketinder.com.acelerazg.service
+package Linketinder.com.acelerazg.Service
 
 import Linketinder.com.acelerazg.DAO.CandidatoDAO
 import Linketinder.com.acelerazg.Interfaces.ICandidatoService
-import Linketinder.com.acelerazg.classes.Candidato
+import Linketinder.com.acelerazg.Model.Candidato
 
 class CandidatoService implements ICandidatoService{
 

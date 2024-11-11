@@ -3,13 +3,16 @@ package Linketinder.com.acelerazg.DAO
 import Linketinder.com.acelerazg.Interfaces.IConexaoBDFactory
 import groovy.sql.Sql
 import java.sql.SQLException
+//Alterar
+class ConexaoPostgres implements IConexaoBDFactory{
 
-class ConexaoDAO implements IConexaoBDFactory{
-    private static ConexaoDAO instance = new ConexaoDAO()
+    //Remover
+    private static ConexaoPostgres instance = new ConexaoPostgres()
 
-    private ConexaoDAO(){}
+    private ConexaoPostgres(){}
 
-    static  ConexaoDAO getInstance(){
+    //Transferir para conexaoFactory
+    static  ConexaoPostgres getInstance(){
         return instance
     }
 

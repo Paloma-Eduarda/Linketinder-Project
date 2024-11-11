@@ -1,6 +1,6 @@
 package Linketinder.com.acelerazg.Interfaces
 
-import Linketinder.com.acelerazg.classes.Empresa
+import Linketinder.com.acelerazg.Model.Empresa
 
 interface IEmpresaService {
 

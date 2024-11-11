@@ -1,10 +1,9 @@
 package com.acelerazg.service
 
 import Linketinder.com.acelerazg.DAO.VagaDAO
-import Linketinder.com.acelerazg.classes.Empresa
-import Linketinder.com.acelerazg.classes.Vaga
-import Linketinder.com.acelerazg.service.EmpresaService
-import Linketinder.com.acelerazg.service.VagaService
+import Linketinder.com.acelerazg.Model.Empresa
+import Linketinder.com.acelerazg.Model.Vaga
+import Linketinder.com.acelerazg.Service.VagaService
 import spock.lang.Specification
 
 class VagaServiceTest extends Specification {

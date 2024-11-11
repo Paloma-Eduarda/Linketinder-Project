@@ -1,7 +1,7 @@
 package Linketinder.com.acelerazg.Interfaces
 
-import Linketinder.com.acelerazg.classes.Candidato
-import Linketinder.com.acelerazg.classes.Competencia
+
+import Linketinder.com.acelerazg.Model.Competencia
 
 interface ICompetenciaService {
 

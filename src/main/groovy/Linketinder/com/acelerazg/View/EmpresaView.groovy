@@ -1,22 +1,20 @@
-package Linketinder.com.acelerazg.menu
+package Linketinder.com.acelerazg.View
 
-import Linketinder.com.acelerazg.DAO.EmpresaDAO
+import Linketinder.com.acelerazg.Controller.EmpresaControl
 import Linketinder.com.acelerazg.DAO.EnderecoDAO
-import Linketinder.com.acelerazg.Interfaces.IEmpresaService
-import Linketinder.com.acelerazg.classes.Empresa
-import Linketinder.com.acelerazg.service.EmpresaService
 
-class MenuEmpresa {
+
+class EmpresaView {
     Scanner scanner = new Scanner(System.in)
-    Empresa empresa
-    MenuVaga vaga = new MenuVaga()
 
-    private EmpresaService empresaService
+    private VagaView vagaView
+    private  EmpresaControl empresaControl
 
-    MenuEmpresa() {
-        EmpresaDAO empresaDAO = new EmpresaDAO("postgresql")
-        this.empresaService = new EmpresaService(empresaDAO)
+    EmpresaView() {
+        this.empresaControl = new EmpresaControl()
+        this.vagaView = new VagaView()
     }
+
     EnderecoDAO enderecoDAO = new EnderecoDAO("postgresql")
 
 
@@ -36,14 +34,14 @@ class MenuEmpresa {
             switch(opcao) {
                 case 1:
                     println "\nEmpresas cadastrados:"
-                    println empresaService.listarEmpresas()
+                    println empresaControl.listarEmpresas()
                     println "Digite o id da empresa que deseja Gerenciar uma Vaga, ou adicionar uma vaga"
                     println "Digite 0 para voltar ao menu principal"
 
                     int opcaoVaga = scanner.nextInt()
 
-                    if(empresaService.listarEmpresas()*.id.contains(opcaoVaga)){
-                        vaga.gerenciarVaga(opcaoVaga)
+                    if(empresaControl.listarEmpresas()*.id.contains(opcaoVaga)){
+                        vagaView.gerenciarVaga(opcaoVaga)
 
                     }else if(opcaoVaga == 0){
                         return
@@ -58,12 +56,12 @@ class MenuEmpresa {
                     break
                 case 3:
                     println "Atualizar uma Empresa"
-                    println empresaService.listarEmpresas()
+                    println empresaControl.listarEmpresas()
                     atualizarEmpresa()
                     break
                 case 4:
                     println "Remover uma Empresa"
-                    println empresaService.listarEmpresas()
+                    println empresaControl.listarEmpresas()
                     excluirEmpresa()
                     break
                 case 5:
@@ -79,7 +77,7 @@ class MenuEmpresa {
     void inserirEmpresa(){
 
         println "Adicione o País da Empresa:"
-        enderecoDAO.consultarPaises()
+        println enderecoDAO.consultarPaises()
 
         int pais = scanner.nextInt()
         scanner.nextLine()
@@ -102,8 +100,7 @@ class MenuEmpresa {
         println "Senha:"
         String senha = scanner.nextLine()
 
-        empresa = new Empresa(cep, descricao, email, senha, nome, pais, cnpj)
-        empresaService.cadastrarEmpresa(empresa)
+        empresaControl.salvarEmpresa(cep, descricao, email, senha, nome, pais, cnpj)
 
     }
     void excluirEmpresa(){
@@ -113,7 +110,7 @@ class MenuEmpresa {
         int id = scanner.nextInt()
         scanner.nextLine()
 
-        empresaService.excluirEmpresa(id)
+        empresaControl.excluirEmpresa(id)
         println "Empresa excluida com sucesso"
 
     }
@@ -148,8 +145,7 @@ class MenuEmpresa {
         println "Senha:"
         String senha = scanner.nextLine()
 
-        empresa = new Empresa(cep, descricao, email, senha, nome, pais, cnpj, id)
-        empresaService.editarEmpresa(empresa)
+        empresaControl.editarEmpresa(cep, descricao, email, senha, nome, pais, cnpj, id)
 
     }
 
