@@ -15,11 +15,11 @@ import java.time.LocalDate
 @WebServlet("/candidato")
 class CandidatoServlet extends HttpServlet {
 
-    private CandidatoControl candidatoControl;
+    private CandidatoControl candidatoControl
 
     @Override
     void init() throws ServletException {
-        this.candidatoControl = new CandidatoControl();
+        this.candidatoControl = new CandidatoControl()
     }
 
     @Override
@@ -39,7 +39,6 @@ class CandidatoServlet extends HttpServlet {
 
 
     }
-
     @Override
     void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -64,8 +63,45 @@ class CandidatoServlet extends HttpServlet {
             response.status = HttpServletResponse.SC_CREATED
 
         } catch (Exception e) {
-
-
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST)
+            response.getWriter().write("Dados invalidos $e")
         }
+    }
+    @Override
+    void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        try {
+            String json = request.reader.text
+
+            Map jsonMap = new JsonSlurper().parseText(json)
+
+            Integer id_candidato = jsonMap.id
+            String cep = jsonMap.cep
+            String descricao = jsonMap.descricao
+            String email = jsonMap.email
+            String senha = jsonMap.senha
+            String nome = jsonMap.nome
+            Integer pais = jsonMap.pais
+            String cpf = jsonMap.cpf
+            String sobrenome = jsonMap.sobrenome
+            LocalDate data = LocalDate.parse(jsonMap.data)
+
+
+            candidatoControl.editarCandidato(cep, descricao, email, senha, nome, pais, cpf, data, sobrenome, id_candidato)
+
+            response.getWriter().write("Candidato Atualizado Com Sucesso!")
+            response.status = HttpServletResponse.SC_OK
+
+        } catch (Exception e) {
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST)
+            response.getWriter().write("Dados invalidos $e")
+        }
+    }
+    void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"))
+       // http://localhost:8080/MeuWebApp/candidato?id=27
+        candidatoControl.excluirCandidato(id)
+        response.status = HttpServletResponse.SC_OK
+        response.getWriter().write("Candidato excluido com sucesso!")
     }
 }
