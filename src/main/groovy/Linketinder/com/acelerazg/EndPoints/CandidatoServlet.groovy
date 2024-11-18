@@ -1,4 +1,4 @@
-package Linketinder.com.acelerazg.Servlet
+package Linketinder.com.acelerazg.EndPoints
 
 import Linketinder.com.acelerazg.Controller.CandidatoControl
 import Linketinder.com.acelerazg.Model.Candidato
@@ -34,7 +34,7 @@ class CandidatoServlet extends HttpServlet {
 
         } catch (Exception e) {
             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR)
-            response.getWriter().write("$e")
+            response.writer.write("${e.message}")
         }
 
 
@@ -59,12 +59,12 @@ class CandidatoServlet extends HttpServlet {
 
             int id = candidatoControl.salvarCandidato(cep, descricao, email, senha, nome, pais, cpf, data, sobrenome)
 
-            response.getWriter().write("Candidato salvo com ID: ${id}")
+            response.writer.write("Candidato salvo com ID: ${id}")
             response.status = HttpServletResponse.SC_CREATED
 
         } catch (Exception e) {
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST)
-            response.getWriter().write("Dados invalidos $e")
+            response.writer.write("Dados invalidos ${e.message}")
         }
     }
     @Override
@@ -89,19 +89,26 @@ class CandidatoServlet extends HttpServlet {
 
             candidatoControl.editarCandidato(cep, descricao, email, senha, nome, pais, cpf, data, sobrenome, id_candidato)
 
-            response.getWriter().write("Candidato Atualizado Com Sucesso!")
+            response.writer.write("Candidato Atualizado Com Sucesso!")
             response.status = HttpServletResponse.SC_OK
 
         } catch (Exception e) {
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST)
-            response.getWriter().write("Dados invalidos $e")
+            response.writer.write("Dados invalidos ${e.message}")
         }
     }
     void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int id = Integer.parseInt(request.getParameter("id"))
-       // http://localhost:8080/MeuWebApp/candidato?id=27
-        candidatoControl.excluirCandidato(id)
-        response.status = HttpServletResponse.SC_OK
-        response.getWriter().write("Candidato excluido com sucesso!")
+       try{
+           int id = Integer.parseInt(request.getParameter("id"))
+           //http://localhost:8080/MeuWebApp/candidato?id=27
+           candidatoControl.excluirCandidato(id)
+           response.status = HttpServletResponse.SC_OK
+           response.writer.write("Candidato excluido com sucesso!")
+
+       } catch (NumberFormatException ex){
+           response.setStatus(HttpServletResponse.SC_BAD_REQUEST)
+           response.writer.write("ID inválido: ${ex.message}")
+       }
+
     }
 }

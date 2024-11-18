@@ -1,4 +1,4 @@
-package Linketinder.com.acelerazg.Servlet
+package Linketinder.com.acelerazg.EndPoints
 
 import Linketinder.com.acelerazg.Controller.EmpresaControl
 import Linketinder.com.acelerazg.Model.Empresa
@@ -30,9 +30,9 @@ class EmpresaServlet extends HttpServlet{
             response.writer << empresas.toString()
             response.status = HttpServletResponse.SC_OK
 
-        } catch (Exception e) {
+        } catch (Exception ex) {
             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR)
-            response.getWriter().write("$e")
+            response.writer.write("ID inválido: ${ex.message}")
         }
 
 
@@ -53,12 +53,12 @@ class EmpresaServlet extends HttpServlet{
 
             empresaControl.salvarEmpresa(cep, descricao, email, senha, nome, pais, cnpj)
 
-            response.getWriter().write("Empresa Salva com Sucesso")
+            response.writer.write("Empresa Salva com Sucesso")
             response.status = HttpServletResponse.SC_CREATED
 
         }catch (Exception ex){
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST)
-            response.getWriter().write("Dados invalidos $ex")
+            response.writer.write("ID inválido: ${ex.message}")
         }
 
     }
@@ -79,21 +79,27 @@ class EmpresaServlet extends HttpServlet{
 
             empresaControl.editarEmpresa(cep, descricao, email, senha, nome, pais, cnpj, id_empresa)
 
-            response.getWriter().write("Empresa Atualizada com Sucesso")
+            response.writer.write("Empresa Atualizada com Sucesso")
             response.status = HttpServletResponse.SC_OK
 
         }catch (Exception ex){
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST)
-            response.getWriter().write("Dados invalidos $ex")
+            response.writer.write("ID inválido: ${ex.message}")
         }
 
     }
     void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int id = Integer.parseInt(request.getParameter("id"))
         // http://localhost:8080/MeuWebApp/empresa?id=1
-        empresaControl.excluirEmpresa(id)
-        response.status = HttpServletResponse.SC_OK
-        response.getWriter().write("Empresa excluida com sucesso!")
+        try{
+            int id = Integer.parseInt(request.getParameter("id"))
+            empresaControl.excluirEmpresa(id)
+            response.status = HttpServletResponse.SC_OK
+            response.writer.write("Empresa excluida com sucesso!")
+
+        } catch (NumberFormatException ex){
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST)
+            response.writer.write("ID inválido: ${ex.message}")
+        }
     }
 
 }
