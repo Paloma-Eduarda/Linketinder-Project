@@ -19,20 +19,76 @@ Persistência de Dados: Todos os dados são armazenados em um banco de dados Pos
 
 ## Tecnologias
 
-- Groovy.
-- IntelliJ IDEA ou qualquer IDE compatível com Groovy.
-- PostgreSQL (Persistência de Dados)
-- Workbench (Criação de modelo)
+- **Back-End:** Groovy e Servlet.
+- **Front-End:** TypeScript,JavaScritp, HTML, CSS e Bootstrap 
+- **IDE:** IntelliJ IDEA ou qualquer IDE compatível com Groovy.
+- **Banco de dados:** PostgreSQL (Persistência de Dados)
+- **Modelagem:** Workbench (Criação de modelo)
+- **Servidor:** Tomcat 8
+
 
 ## Como Executar
 
 1. Clone o repositório ou baixe o código-fonte.
 2. Compile e execute a classe `Linketinder.com.acelerazg.Main`.
 3. Utilize o menu principal no console.
+4. Configure o banco de dados PostgreSQL e insira as credenciais no arquivo de configuração.
+5. Inicie o servidor Tomcat e implante o arquivo .war.
+6. Use ferramentas como Postman ou o console da aplicação para interagir com os endpoints.
 
-## Instruções de Uso
+## Endpoints da API
 
-1. **Listar Empresas**: Listar todas as empresas.
-2. **Listar Candidatos**: Listar todos os candidatos.
+**Base URL:** http://localhost:8080/Linketinder
 
+### **Candidatos**
+
+#### **1. Criar Candidato**
+- **Método:** `POST`
+- **Endpoint:** `/candidato`
+- **Corpo da Requisição (JSON):**
+
+  ```json
+  {
+    "cep": "12345678",
+    "descricao": "Descrição do candidato",
+    "email": "email@dominio.com",
+    "senha": "senha123",
+    "nome": "Nome do Candidato",
+    "pais": 1,
+    "cpf": "123.456.789-00",
+    "sobrenome": "Sobrenome",
+    "data": "2001-11-15"
+  }
+  
+#### **2. Listar Candidatos**
+- **Método:** `GET`
+- **Endpoint:** `/candidato`
+
+
+#### **3. Atualizar Candidato**
+- **Método:** `PUT`
+- **Endpoint:** `/candidato`
+- **Descrição:** Atualiza um candidato.
+- - **Corpo da Requisição (JSON):**
+
+  ```json
+  {
+    "id": 1 
+    "cep": "12345678",
+    "descricao": "Descrição do candidato",
+    "email": "email@dominio.com",
+    "senha": "senha123",
+    "nome": "Nome do Candidato",
+    "pais": 1,
+    "cpf": "123.456.789-00",
+    "sobrenome": "Sobrenome",
+    "data": "2001-11-15"
+  }
+  
+#### **4. Excluir Candidato**
+- **Método:** `DELETE`
+- **Endpoint:** `/candidato?id={id}`
+- **Descrição:** Deleta um candidato. 
+  
+  
 Desenvolvido por Paloma Eduarda
