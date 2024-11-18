@@ -1,33 +1,29 @@
 package Linketinder.com.acelerazg.Servlet
 
-import Linketinder.com.acelerazg.Controller.VagaControl
-import Linketinder.com.acelerazg.Model.Vaga
+import Linketinder.com.acelerazg.Controller.CompetenciaControl
+import Linketinder.com.acelerazg.Model.Competencia
 import groovy.json.JsonSlurper
 
 import javax.servlet.ServletException
-import javax.servlet.annotation.WebServlet
 import javax.servlet.http.HttpServlet
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
+@
+class CompetenciaServlet extends HttpServlet{
 
-@WebServlet("/vaga")
-class VagaServlet extends HttpServlet{
+    private CompetenciaControl competenciaControl
 
-    private VagaControl vagaControl
-
-    @Override
     void init() throws ServletException {
-        this.vagaControl = new VagaControl()
+        this.competenciaControl = new CompetenciaControl()
     }
     @Override
     void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.contentType = "application/json"
 
         try {
-            int id = Integer.parseInt(request.getParameter("id"))
-            List <Vaga> vagas= vagaControl.listarVagas(id)
+            List <Competencia> competencias = competenciaControl.listarCompetencias()
 
-            response.writer << vagas.toString()
+            response.writer << competencias.toString()
             response.status = HttpServletResponse.SC_OK
 
         } catch (Exception e) {
@@ -43,15 +39,11 @@ class VagaServlet extends HttpServlet{
             String json = request.reader.text
             Map jsonMap = new JsonSlurper().parseText(json)
 
-            String cidade = jsonMap.cidade
-            String descricao = jsonMap.descricao
-            Integer id = jsonMap.id
-            Integer estado = jsonMap.estado
             String nome = jsonMap.nome
 
-            vagaControl.salvarVaga(cidade, descricao,id, estado, nome)
+            competenciaControl.cadastrarCompetencia(nome)
 
-            response.getWriter().write("Vaga Salva com Sucesso")
+            response.getWriter().write("Competencia Salva com Sucesso")
             response.status = HttpServletResponse.SC_CREATED
 
         }catch (Exception ex){
@@ -66,18 +58,13 @@ class VagaServlet extends HttpServlet{
             String json = request.reader.text
             Map jsonMap = new JsonSlurper().parseText(json)
 
-            Integer idVaga = jsonMap.idVaga
-            String cidade = jsonMap.cidade
-            String descricao = jsonMap.descricao
             Integer id = jsonMap.id
-            Integer estado = jsonMap.estado
             String nome = jsonMap.nome
 
-            vagaControl.editarVaga(cidade, descricao,id, estado, idVaga, nome)
+            competenciaControl.editarCompetencia(nome,id)
 
-            response.getWriter().write("Vaga atualizada com Sucesso")
+            response.getWriter().write("Competencia Atualizada com Sucesso")
             response.status = HttpServletResponse.SC_OK
-
 
         }catch (Exception ex){
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST)
@@ -88,8 +75,10 @@ class VagaServlet extends HttpServlet{
     void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"))
 
-        vagaControl.excluirVaga(id)
+        competenciaControl.excluirCompetencia(id)
         response.status = HttpServletResponse.SC_OK
-        response.getWriter().write("Vaga excluida com sucesso!")
+        response.getWriter().write("Competencia excluida com sucesso!")
     }
+
+
 }
