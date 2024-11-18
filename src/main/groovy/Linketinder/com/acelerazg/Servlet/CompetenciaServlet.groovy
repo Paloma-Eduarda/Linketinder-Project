@@ -5,10 +5,12 @@ import Linketinder.com.acelerazg.Model.Competencia
 import groovy.json.JsonSlurper
 
 import javax.servlet.ServletException
+import javax.servlet.annotation.WebServlet
 import javax.servlet.http.HttpServlet
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
-@
+
+@WebServlet("/competencia")
 class CompetenciaServlet extends HttpServlet{
 
     private CompetenciaControl competenciaControl
