@@ -89,6 +89,53 @@ Persistência de Dados: Todos os dados são armazenados em um banco de dados Pos
 - **Método:** `DELETE`
 - **Endpoint:** `/candidato?id={id}`
 - **Descrição:** Deleta um candidato. 
+
+
+  ### **Empresa**
+
+#### **1. Criar uma Empresa**
+- **Método:** `POST`
+- **Endpoint:** `/empresa`
+- **Corpo da Requisição (JSON):**
+
+  ```json
+  {
+    "cep": "12345678",
+    "descricao": "Descrição da Empresa",
+    "email": "email@dominio.com",
+    "senha": "senha123",
+    "nome": "Nome da Empresa",
+    "pais": 1,
+    "cnpj": "123.456.789-00"
+  }
+  
+#### **2. Listar Empresas**
+- **Método:** `GET`
+- **Endpoint:** `/empresa`
+
+
+#### **3. Atualizar Empresa**
+- **Método:** `PUT`
+- **Endpoint:** `/empresa`
+- **Descrição:** Atualiza uma Empresa.
+- - **Corpo da Requisição (JSON):**
+
+  ```json
+  {
+    "id": 1 
+    "cep": "12345678",
+    "descricao": "Descrição da Empresa",
+    "email": "email@dominio.com",
+    "senha": "senha123",
+    "nome": "Nome da Empresa",
+    "pais": 1,
+    "cnpj": "123.456.789-00"
+  }
+  
+#### **4. Excluir Empresa**
+- **Método:** `DELETE`
+- **Endpoint:** `/empresa?id={id}`
+- **Descrição:** Deleta uma empresa. 
   
   
 Desenvolvido por Paloma Eduarda
