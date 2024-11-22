@@ -100,7 +100,6 @@ class CandidatoServlet extends HttpServlet {
     void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
        try{
            int id = Integer.parseInt(request.getParameter("id"))
-           //http://localhost:8080/MeuWebApp/candidato?id=27
            candidatoControl.excluirCandidato(id)
            response.status = HttpServletResponse.SC_OK
            response.writer.write("Candidato excluido com sucesso!")
